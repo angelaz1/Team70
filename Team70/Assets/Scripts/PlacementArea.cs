@@ -16,7 +16,8 @@ public class PlacementArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == targetObject) {
+        if (other.gameObject == targetObject) 
+        {
             other.gameObject.GetComponent<SnappableObject>().SnapToLocation(transform.position);
             TriggerableAction();
         }
