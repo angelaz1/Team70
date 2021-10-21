@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     // Probably don't have enough actions to warrant fully modularizing this
 
     public GrandmaController grandma;
+    public GameObject cameraMover;
 
     int currentEvent = 0;
 
@@ -27,5 +28,10 @@ public class GameManager : MonoBehaviour
         }
 
         currentEvent++;
+    }
+
+    public void TriggerEndScene()
+    {
+        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
     }
 }
