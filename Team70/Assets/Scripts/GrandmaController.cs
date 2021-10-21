@@ -5,12 +5,16 @@ using UnityEngine;
 public class GrandmaController : MonoBehaviour
 {
     public List<AudioClip> audioClips;
-    float[] waitTimes = { 2 };
+    public List<GameObject> thoughtBubbles;
+    public GameObject thoughtCanvas;
+
+    float[] waitTimes = { 2f };
     string[] triggerNames = { "EnterRoom" };
 
     int currentState = -1;
     Animator anim;
     AudioSource audioSource;
+    GameObject currentThoughtBubble = null;
 
     void Start()
     {
@@ -41,6 +45,11 @@ public class GrandmaController : MonoBehaviour
         yield return new WaitForSeconds(waitTimes[currentState]);
         audioSource.clip = audioClips[currentState];
         audioSource.Play();
+
+        if (currentThoughtBubble) Destroy(currentThoughtBubble);
+        if (currentState < thoughtBubbles.Count) {
+            currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
+        }
 
         anim.SetTrigger(triggerNames[currentState]);
     }
