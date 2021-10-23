@@ -8,7 +8,7 @@ public class GrandmaController : MonoBehaviour
     public List<GameObject> thoughtBubbles;
     public GameObject thoughtCanvas;
 
-    public string[] triggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedMeds" };
+    string[] triggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedMeds" };
 
     int currentState = -1;
     Animator anim;
