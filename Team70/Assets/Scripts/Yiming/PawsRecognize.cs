@@ -19,8 +19,8 @@ public class PawsRecognize : MonoBehaviour
     public string handName;
     private Queue<Vector3> handPos = new Queue<Vector3>();
     public float recordInterval = 0.05f;
-    public float Pace1recognitionThreshold = 0.9f;
-    public float Pace2recognitionThreshold = 0.4f;
+    public float recognitionThreshold = 0.7f;
+
     public int HandListLimitCount = 10;
     public NewStringEvent onRecognize;
     private void Start()
@@ -30,6 +30,7 @@ public class PawsRecognize : MonoBehaviour
     private void FixedUpdate()
     {
         ReversoHandT = handT.position - rigT.position;
+        GestureListInitial();
         HandGestureRecognize();
     }
     /// <summary>
@@ -59,24 +60,15 @@ public class PawsRecognize : MonoBehaviour
                 //each time turn the queue into a queue
                 rightHandPosArray = handPos.ToArray();
                 Gesture newGesture = TurnPositionToGesture(rightHandPosArray);
-                GestureListInitial();
                 //check if this in the gesturesList
                 Result result = PointCloudRecognizer.Classify(newGesture, gesturesList.ToArray());
                 string movementName = result.GestureClass;
-                //debugText.text = result.GestureClass + "  :" + result.Score;
-                print(result.GestureClass + " : " + result.Score);
-                if (result.Score > Pace1recognitionThreshold && result.GestureClass == gestureStoreList[0].gameObject.name)
-                {
-                    
-                    onRecognize.Invoke(handName + movementName);
-                    handPos.Clear();
-                }
-                else if(result.Score > Pace2recognitionThreshold && result.GestureClass == gestureStoreList[1].gameObject.name)
+                //print(result.GestureClass + " : " + result.Score);
+                if(result.Score > recognitionThreshold)
                 {
                     onRecognize.Invoke(handName + movementName);
                     handPos.Clear();
                 }
-
             }
         }
     }
