@@ -7,27 +7,27 @@ public class DogMovement : MonoBehaviour
 
     public GameObject rightInput;
     public GameObject leftInput;
-    public GameObject pace1;
-    public GameObject pace2;
+    public List<GameObject> pace = new List<GameObject>();
 
-    private string rightPawPrepare;
-    private string rightPawMovepace;
-    private string leftPawPrepare;
-    private string leftPawMovepace;
+    
+    private List<string> rightPawMovepace = new List<string>();
+    private List<string> leftPawMovepace =  new List<string>();
     // Start is called before the first frame update
 
     public Rigidbody rigidBody;
     public float MoveSpeed = 10f;
     public float upWardShake = 0.05f;
-    private bool isRightPrepare = false;
-    private bool isLeftPrepare = false;
-    private bool isPrepare = false;
+    public float velocityLimit = 10f;
+    //public bool isPrepare = false;
     void Start()
     {
-        rightPawPrepare = rightInput.name + pace1.name;
-        rightPawMovepace = rightInput.name + pace2.name;
-        leftPawPrepare = leftInput.name + pace1.name;
-        leftPawMovepace = leftInput.name + pace2.name;
+     
+        foreach(var item in pace)
+        {
+            rightPawMovepace.Add(rightInput.name + item.name);
+            leftPawMovepace.Add(leftInput.name + item.name);
+        }
+    
         rigidBody = this.GetComponent<Rigidbody>();
     }
 
@@ -39,21 +39,11 @@ public class DogMovement : MonoBehaviour
 
     public void RecieveDogPawsBehavior(string pawsInput)
     {
-        if(pawsInput == rightPawPrepare)
+         if(rightPawMovepace.Contains(pawsInput))
         {
-            print(pawsInput);
-            isPrepare = true;
-        }
-        else if(pawsInput == rightPawMovepace)
-        {
-            print(pawsInput);
             addFroceToDogBody();
         }
-        else if(pawsInput == leftPawPrepare)
-        {
-            isPrepare = true;
-        }
-        else if(pawsInput == leftPawMovepace)
+        else if(leftPawMovepace.Contains(pawsInput))
         {
             addFroceToDogBody();
         }
@@ -61,13 +51,13 @@ public class DogMovement : MonoBehaviour
 
     private void addFroceToDogBody()
     {
-        if(isPrepare)
-        {
             Vector3 dir = Camera.main.transform.forward;
             //add small froce toward up
             dir = dir + upWardShake * Vector3.up;
-            rigidBody.AddForce(dir * MoveSpeed, ForceMode.Impulse);
-            isPrepare = false;
-        }   
+            if(rigidBody.velocity.magnitude < velocityLimit)
+            {
+                rigidBody.AddForce(dir * MoveSpeed, ForceMode.Impulse);
+            }
+            
     }
 }
