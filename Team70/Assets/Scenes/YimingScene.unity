@@ -218,7 +218,7 @@ MonoBehaviour:
   handName: 
   recordInterval: 0.05
   Pace1recognitionThreshold: 0.9
-  Pace2recognitionThreshold: 0.4
+  Pace2recognitionThreshold: 0.3
   HandListLimitCount: 10
   onRecognize:
     m_PersistentCalls:
