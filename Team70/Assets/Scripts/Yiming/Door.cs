@@ -7,10 +7,8 @@ public class Door : MonoBehaviour
     [SerializeField]Animator doorAni;
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "Dog")
         {
-            
             doorAni.SetBool("isOpen", true);
         }
     }

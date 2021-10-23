@@ -15,11 +15,8 @@ public class MuzzleController : MonoBehaviour
 
     void Start()
     {
-        leftSelect.action.started += PickUpObject;
-        rightSelect.action.started += PickUpObject;
-
-        leftSelect.action.canceled += DropObject;
-        rightSelect.action.canceled += DropObject;
+        leftSelect.action.started += CheckForObject;
+        rightSelect.action.started += CheckForObject;
     }
 
     private void Update()
@@ -29,9 +26,7 @@ public class MuzzleController : MonoBehaviour
             SnappableObject snappable = selectingObject.GetComponent<SnappableObject>();
             if (snappable != null && snappable.IsSnapped())
             {
-                grabbingObject = false;
-                selectingObject.GetComponent<Rigidbody>().freezeRotation = false;
-                selectingObject = null;
+                DropObject(true);
             }
             else
             { 
@@ -40,27 +35,39 @@ public class MuzzleController : MonoBehaviour
         }
     }
 
-    void PickUpObject(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("Started");
-        if (!grabbingObject && selectingObject != null) 
+    void CheckForObject(InputAction.CallbackContext ctx)
+    { 
+        if (grabbingObject)
         {
-            selectingObject.transform.position = transform.position;
-            selectingObject.transform.Rotate(transform.rotation.eulerAngles);
-            selectingObject.GetComponent<Rigidbody>().freezeRotation = true;
-            grabbingObject = true;
+            Debug.Log("Dropping object");
+            DropObject(false);
+        }
+        else if (!grabbingObject && selectingObject != null)
+        {
+            Debug.Log("Grabbing object");
+            GrabObject();
         }
     }
 
-    void DropObject(InputAction.CallbackContext ctx)
+    private void DropObject(bool dropFromSnapping)
     {
-        Debug.Log("Cancelled");
-        if (grabbingObject)
-        { 
-            grabbingObject = false;
-            selectingObject.GetComponent<Rigidbody>().freezeRotation = false;
-            selectingObject = null;
-        }
+        grabbingObject = false;
+        selectingObject.GetComponent<Rigidbody>().freezeRotation = false;
+        selectingObject.GetComponent<SnappableObject>().SetGrabbed(false);
+        selectingObject.transform.SetParent(null);
+        selectingObject.transform.rotation = Quaternion.identity;
+        if (!dropFromSnapping) selectingObject.transform.position += 0.5f * Vector3.up;
+        selectingObject = null;
+    }
+
+    private void GrabObject()
+    {
+        selectingObject.transform.position = transform.position;
+        selectingObject.transform.SetParent(transform);
+        selectingObject.transform.localRotation = Quaternion.identity;
+        selectingObject.GetComponent<Rigidbody>().freezeRotation = true;
+        selectingObject.GetComponent<SnappableObject>().SetGrabbed(true);
+        grabbingObject = true;
     }
 
     private void OnTriggerEnter(Collider other)

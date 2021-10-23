@@ -1,37 +1,99 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
-    // The general flow of our story is 
-    // Player does action -> Trigger response -> Prompt next action
-    // Probably don't have enough actions to warrant fully modularizing this
+    public GameObject simulatorPrefab;
 
     public GrandmaController grandma;
     public GameObject cameraMover;
 
+    // List of wait times before triggering next action in sequence
+    public float[] waitTimes;
+
+    public GameObject[] taskObjects;
+
     int currentEvent = 0;
+    bool waitingForBark = false;
+
+    public GameObject barkUI;
+    public InputActionReference barkButton;
+
+    private void Awake()
+    {
+        simulatorPrefab.SetActive(!XRSettings.isDeviceActive);
+
+        foreach (GameObject taskObject in taskObjects)
+        {
+            taskObject.SetActive(false);
+        }
+
+        barkButton.action.started += CheckForBark;
+    }
+
+    void CheckForBark(InputAction.CallbackContext ctx)
+    {
+        if (waitingForBark)
+        {
+            Debug.Log("Woof!");
+            TriggerEndScene();
+            waitingForBark = false;
+        }
+    }
 
     public void TriggerNextAction() 
     {
-        switch (currentEvent) 
+        if (currentEvent < waitTimes.Length)
         {
-            case 0: // Player walks through door -> wait for player to explore then trigger grandma
-            case 1: // Player gets newspaper -> trigger grandma anim + dialogue
-            case 2: // Player gets glasses -> trigger grandma anim + dialogue, wait, then anim + dialogue
-            case 3: // Player gets meds -> trigger grandma anim + dialogue, grandma goes outside
-            case 4: // Player goes outside -> trigger UI/o.w. to tell player to bark
-            case 5: // Player barks -> trigger anim + dialogue
-                grandma.TriggerNextState(); break;
-            default: Debug.LogError("No Actions left!"); return;
+            grandma.CompleteCurrentState();
+            Invoke(nameof(TriggerNewspaperState), waitTimes[currentEvent]);
+        }
+        else if (currentEvent == waitTimes.Length)
+        {
+            // Prompt player to bark
+            waitingForBark = true;
+            barkUI.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("No Actions left!");
         }
 
+        //switch (currentEvent) 
+        //{
+        //    case 0:
+        //        {
+        //            // Player walks through door -> wait for player to explore then trigger grandma
+        //            Invoke(nameof(TriggerNewspaperState), waitTimes[currentEvent]);
+        //            break;
+        //        }
+        //    case 1: // Player gets newspaper -> trigger grandma anim + dialogue
+        //    case 2: // Player gets glasses -> trigger grandma anim + dialogue, wait, then anim + dialogue
+        //    case 3: // Player gets meds -> trigger grandma anim + dialogue, grandma goes outside
+        //    case 4: // Player goes outside -> trigger UI/o.w. to tell player to bark
+        //    case 5: // Player barks -> trigger anim + dialogue
+        //        grandma.TriggerNextState(); break;
+        //    default: Debug.LogError("No Actions left!"); return;
+        //}
+
+        //currentEvent++;
+    }
+
+    private void TriggerNewspaperState()
+    {
+        if (currentEvent < taskObjects.Length) taskObjects[currentEvent].SetActive(true);
+        grandma.TriggerNextState();
         currentEvent++;
     }
 
     public void TriggerEndScene()
     {
-        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
+        // Player did bark
+        barkUI.SetActive(false);
+        grandma.TriggerEndingState();
+        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene"); // Change this to be the correct camera movement
     }
 }
