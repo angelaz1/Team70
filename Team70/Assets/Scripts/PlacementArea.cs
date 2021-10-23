@@ -29,6 +29,7 @@ public class PlacementArea : MonoBehaviour
         {
             placed = true;
             gameManager.TriggerNextAction();
+            Destroy(gameObject);
         }
     }
 }
