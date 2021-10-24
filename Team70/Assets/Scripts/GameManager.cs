@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject barkUI;
     public InputActionReference barkButton;
 
+    BGMManager bgmManager;
+
     private void Awake()
     {
         simulatorPrefab.SetActive(!XRSettings.isDeviceActive);
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
         }
 
         barkButton.action.started += CheckForBark;
+
+        bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
     }
 
     void CheckForBark(InputAction.CallbackContext ctx)
@@ -46,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     public void TriggerNextAction() 
     {
+        if (currentEvent == 0) bgmManager.FadeOutBGM();
+
         if (currentEvent < waitTimes.Length)
         {
             grandma.CompleteCurrentState();

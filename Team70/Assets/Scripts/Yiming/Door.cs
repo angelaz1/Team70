@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField]Animator doorAni;
+    [SerializeField] Animator doorAni;
+    [SerializeField] AudioSource audioSource;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Dog")
         {
             doorAni.SetBool("isOpen", true);
+            audioSource.Play();
         }
     }
 
