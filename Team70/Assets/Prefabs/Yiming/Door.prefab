@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAni: {fileID: 5400764176694931785}
   audioSource: {fileID: 448697632512558665}
+  closeOnExit: 1
 --- !u!1 &5400764176694931784
 GameObject:
   m_ObjectHideFlags: 0

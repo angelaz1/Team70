@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class GrandmaController : MonoBehaviour
 {
-    public List<AudioClip> audioClips; // This will likely need to be changed into "finish action clips" and "start action clips"
+    public List<AudioClip> startActionClips; // This will likely need to be changed into "finish action clips" and "start action clips"
+    public List<AudioClip> finishActionClips;
     public List<GameObject> thoughtBubbles;
     public GameObject thoughtCanvas;
 
-    string[] triggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedMeds" };
+    public float waitTimeTillShowFinish = 1f;
+
+    string[] startActionTriggerNames = { "WaitForNewspaper", "WaitForGlasses", "WaitForMeds" };
+    string[] finishActionTriggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedMeds" };
 
     int currentState = -1;
     Animator anim;
@@ -59,13 +63,29 @@ public class GrandmaController : MonoBehaviour
     public void CompleteCurrentState()
     {
         if (currentThoughtBubble) Destroy(currentThoughtBubble);
+
+        Invoke(nameof(FinishCurrentState), waitTimeTillShowFinish);
+    }
+
+    void FinishCurrentState()
+    {
+        if (currentState + 1 >= 0 && currentState + 1 < finishActionTriggerNames.Length)
+        {
+            anim.SetTrigger(finishActionTriggerNames[currentState + 1]);
+        }
+
+        if (currentState >= 0 && currentState < finishActionClips.Count)
+        {
+            audioSource.clip = finishActionClips[currentState];
+            audioSource.Play();
+        }
     }
 
     void StartNextState()
     {
-        if (currentState < audioClips.Count)
+        if (currentState < startActionClips.Count)
         { 
-            audioSource.clip = audioClips[currentState];
+            audioSource.clip = startActionClips[currentState];
             audioSource.Play();
         }
 
@@ -73,9 +93,9 @@ public class GrandmaController : MonoBehaviour
             currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
         }
 
-        if (currentState < triggerNames.Length)
+        if (currentState < startActionTriggerNames.Length)
         { 
-            anim.SetTrigger(triggerNames[currentState]);
+            anim.SetTrigger(startActionTriggerNames[currentState]);
         }
     }
 }

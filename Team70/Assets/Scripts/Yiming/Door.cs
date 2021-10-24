@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     [SerializeField] Animator doorAni;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] bool closeOnExit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,7 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Dog")
         {
-            doorAni.SetBool("isOpen", false);
+            if (closeOnExit) doorAni.SetBool("isOpen", false);
         }
     }
 }
