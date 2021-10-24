@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     int currentEvent = 0;
     bool waitingForBark = false;
 
+    public GameObject frontdoorCollider;
+    public GameObject backdoorCollider;
+
     public GameObject barkUI;
     public InputActionReference barkButton;
 
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         barkButton.action.started += CheckForBark;
 
         bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
+        backdoorCollider.SetActive(false);
     }
 
     void CheckForBark(InputAction.CallbackContext ctx)
@@ -52,12 +56,19 @@ public class GameManager : MonoBehaviour
 
     public void TriggerNextAction() 
     {
-        if (currentEvent == 0) bgmManager.FadeOutBGM();
+        if (currentEvent == 0)
+        {
+            frontdoorCollider.GetComponent<Door>().CloseDoor();
+            frontdoorCollider.SetActive(false);
+            bgmManager.FadeOutBGM();
+        }
 
         if (currentEvent < waitTimes.Length)
         {
             grandma.CompleteCurrentState();
             Invoke(nameof(TriggerNewspaperState), waitTimes[currentEvent]);
+
+            if (currentEvent == waitTimes.Length - 1) backdoorCollider.SetActive(true);
         }
         else if (currentEvent == waitTimes.Length)
         {

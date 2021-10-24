@@ -12,8 +12,7 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Dog")
         {
-            doorAni.SetBool("isOpen", true);
-            audioSource.Play();
+            OpenDoor();
         }
     }
 
@@ -21,7 +20,18 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Dog")
         {
-            if (closeOnExit) doorAni.SetBool("isOpen", false);
+            if (closeOnExit) CloseDoor();
         }
+    }
+
+    public void OpenDoor()
+    {
+        doorAni.SetBool("isOpen", true);
+        audioSource.Play();
+    }
+
+    public void CloseDoor()
+    {
+        doorAni.SetBool("isOpen", false);
     }
 }
