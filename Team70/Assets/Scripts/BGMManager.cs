@@ -9,23 +9,23 @@ public class BGMManager : MonoBehaviour
     bool fadingOut = false;
     bool fadingIn = true;
 
-    float fadeSpeed = 0.5f;
+    float fadeSpeed = 0.4f;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (fadingOut)
         {
+            fadingIn = false;
             audioSource.volume -= fadeSpeed * Time.deltaTime;
             if (audioSource.volume == 0) fadingOut = false;
         }
 
-        if (fadingIn)
+        else if (fadingIn)
         {
             audioSource.volume += fadeSpeed * Time.deltaTime;
             if (audioSource.volume == 1) fadingIn = false;

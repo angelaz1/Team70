@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+[RequireComponent(typeof(AudioSource))]
 public class SnappableObject : MonoBehaviour
 {
     XRGrabInteractable interactable;
@@ -11,10 +12,18 @@ public class SnappableObject : MonoBehaviour
 
     TaskObject parentTaskObject;
 
+    public AudioClip grabbedClip;
+    public AudioClip droppedClip;
+
+    AudioSource audioSource;
+    DogSFXManager dogSFXManager;
+
     private void Start()
     {
         interactable = GetComponent<XRGrabInteractable>();
         parentTaskObject = GetComponentInParent<TaskObject>();
+        audioSource = GetComponent<AudioSource>();
+        dogSFXManager = GameObject.Find("DogSFXManager").GetComponent<DogSFXManager>();
     }
 
     public void SnapToLocation(Vector3 position)
@@ -30,6 +39,20 @@ public class SnappableObject : MonoBehaviour
     {
         isGrabbed = value;
         parentTaskObject.SetPlacementAreaVisibility(value);
+
+        if (isGrabbed)
+        {
+            audioSource.clip = grabbedClip;
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.clip = droppedClip;
+            audioSource.Play();
+
+            if (isSnapped) dogSFXManager.PlayHappyClip();
+            else dogSFXManager.PlaySadClip();
+        }
     }
 
     public bool IsSnapped()
@@ -40,5 +63,10 @@ public class SnappableObject : MonoBehaviour
     public bool IsGrabbed()
     {
         return isGrabbed;
+    }
+
+    public void RemoveAnimator()
+    {
+        Destroy(GetComponent<Animator>());
     }
 }

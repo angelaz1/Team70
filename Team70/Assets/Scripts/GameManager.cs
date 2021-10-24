@@ -6,7 +6,8 @@ using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject simulatorPrefab;
+    public GameObject simulatorObjects;
+    public GameObject actualObjects;
 
     public GrandmaController grandma;
     public GameObject cameraMover;
@@ -26,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        simulatorPrefab.SetActive(!XRSettings.isDeviceActive);
+        simulatorObjects.SetActive(!XRSettings.isDeviceActive);
+        actualObjects.SetActive(XRSettings.isDeviceActive);
 
         foreach (GameObject taskObject in taskObjects)
         {
