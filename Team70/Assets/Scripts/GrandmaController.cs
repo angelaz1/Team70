@@ -11,13 +11,16 @@ public class GrandmaController : MonoBehaviour
 
     public float waitTimeTillShowFinish = 1f;
 
-    string[] startActionTriggerNames = { "WaitForNewspaper", "WaitForGlasses", "WaitForMeds" };
-    string[] finishActionTriggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedMeds" };
+    string[] startActionTriggerNames = { "WaitForNewspaper", "WaitForGlasses", "WaitForPills" };
+    string[] finishActionTriggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedPills" };
 
     int currentState = -1;
     Animator anim;
     AudioSource audioSource;
     GameObject currentThoughtBubble = null;
+
+    public Door backDoor;
+    public Animator detailedGrandmaAnimator;
 
     void Start()
     {
@@ -97,5 +100,25 @@ public class GrandmaController : MonoBehaviour
         { 
             anim.SetTrigger(startActionTriggerNames[currentState]);
         }
+    }
+
+    public void TriggerOpenBackdoor()
+    {
+        backDoor.OpenDoor();
+    }
+
+    public void TriggerCloseBackdoor()
+    {
+        backDoor.CloseDoor();
+    }
+
+    public void StartWalkCycle()
+    {
+        detailedGrandmaAnimator.SetBool("isWalking", true);
+    }
+
+    public void StopWalkCycle()
+    {
+        detailedGrandmaAnimator.SetBool("isWalking", false);
     }
 }
