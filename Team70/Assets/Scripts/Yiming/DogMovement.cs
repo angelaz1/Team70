@@ -26,8 +26,10 @@ public class DogMovement : MonoBehaviour
     private bool pressLeftGrip = false;
     public float rayLength = 4f;
     public Transform HitGround;
-    public float solpeSpeed = .5f;
+    public float slopeSpeed = .5f;
     public LayerMask dogMask;
+    private Vector3 slopeDir = Vector3.zero;
+    Vector3 hitNormal;
     Vector3 normalPlane;
     //public bool isPrepare = false;
     void Start()
@@ -57,8 +59,10 @@ public class DogMovement : MonoBehaviour
 
             pressLeftGrip = lgb;
         }
-        print(pressRightGrip);
         
+
+        DetectAngle();
+
     }
 
 
@@ -107,9 +111,11 @@ public class DogMovement : MonoBehaviour
             } 
             //add small froce toward up
             dir = dir + upWardShake * Vector3.up;
+            dir = dir.normalized;
             if (DetectAngle())
             {
-                dir += Vector3.up * solpeSpeed;
+                dir = Vector3.ProjectOnPlane(dir, hitNormal);
+            dir = dir * slopeSpeed;
             }
             if(rigidBody.velocity.magnitude < velocityLimit)
             {
@@ -121,11 +127,13 @@ public class DogMovement : MonoBehaviour
     bool DetectAngle()
     {
         Ray ray = new Ray(HitGround.position, Vector3.down);
-        
+        Debug.DrawRay(HitGround.position, Vector3.down,Color.black);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, rayLength , dogMask))
+        if(Physics.Raycast(ray, out hit, rayLength, dogMask))
         {
-            float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+            print(hit.collider.name);
+            hitNormal = hit.normal;
+            float slopeAngle = Vector3.Angle(hitNormal, Vector3.up);
             print(slopeAngle);
             if(slopeAngle > 0)
             {
