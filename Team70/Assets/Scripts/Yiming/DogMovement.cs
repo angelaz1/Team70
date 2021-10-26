@@ -27,7 +27,7 @@ public class DogMovement : MonoBehaviour
     public float rayLength = 4f;
     public Transform HitGround;
     public float slopeSpeed = .5f;
-    public LayerMask dogMask;
+    public LayerMask DogMask;
     private Vector3 slopeDir = Vector3.zero;
     Vector3 hitNormal;
     Vector3 normalPlane;
@@ -129,7 +129,7 @@ public class DogMovement : MonoBehaviour
         Ray ray = new Ray(HitGround.position, Vector3.down);
         Debug.DrawRay(HitGround.position, Vector3.down,Color.black);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, rayLength, dogMask))
+        if(Physics.Raycast(ray, out hit, rayLength, DogMask))
         {
             print(hit.collider.name);
             hitNormal = hit.normal;
