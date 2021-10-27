@@ -11,7 +11,7 @@ public class GrandmaController : MonoBehaviour
 
     public float waitTimeTillShowFinish = 1f;
 
-    string[] startActionTriggerNames = { "WaitForNewspaper", "WaitForGlasses", "WaitForPills" };
+    string[] startActionTriggerNames = { "WaitForNewspaper", "WaitForGlasses", "WaitForPills", "GoToMusicBox" };
     string[] finishActionTriggerNames = { "EnteredRoom", "GrabbedNewspaper", "GrabbedGlasses", "GrabbedPills" };
 
     int currentState = -1;
@@ -21,6 +21,7 @@ public class GrandmaController : MonoBehaviour
 
     public Door backDoor;
     public Animator detailedGrandmaAnimator;
+
 
     void Start()
     {
@@ -32,26 +33,22 @@ public class GrandmaController : MonoBehaviour
     {
         currentState++;
 
-        if (currentState < thoughtBubbles.Count)
+        if (currentState < 3)
         {
             StartNextState();
+        }
+        else if (currentState == 3)
+        {
+            // Finished indoor tasks, trigger music box
+            audioSource.clip = startActionClips[currentState];
+            audioSource.Play();
+            currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
+            anim.SetTrigger(startActionTriggerNames[currentState]);
         }
         else
         {
             Debug.LogError("No Actions left for Grandma!");
         }
-
-        //switch (currentState)
-        // {
-        //    case 0: 
-        //    case 1: // Player gets newspaper -> trigger grandma anim + dialogue
-        //    case 2: // Player gets glasses -> trigger grandma anim + dialogue, wait, then anim + dialogue
-        //    case 3: // Player gets meds -> trigger grandma anim + dialogue, grandma goes outside
-        //    case 4: // Player goes outside -> trigger UI/o.w. to tell player to bark
-        //    case 5: // Player barks -> trigger anim + dialogue
-        //        StartNextState(); break;
-        //    default: Debug.LogError("No Actions left!"); return;
-        // }
     }
 
     public void TriggerEndingState()
@@ -92,7 +89,8 @@ public class GrandmaController : MonoBehaviour
             audioSource.Play();
         }
 
-        if (currentState < thoughtBubbles.Count) {
+        if (currentState < thoughtBubbles.Count) 
+        {
             currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
         }
 

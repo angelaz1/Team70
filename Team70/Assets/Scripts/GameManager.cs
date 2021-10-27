@@ -66,23 +66,23 @@ public class GameManager : MonoBehaviour
         if (currentEvent < waitTimes.Length)
         {
             grandma.CompleteCurrentState();
-            Invoke(nameof(TriggerNewspaperState), waitTimes[currentEvent]);
+            Invoke(nameof(TriggerGrandmaState), waitTimes[currentEvent]);
 
-            if (currentEvent == waitTimes.Length - 1) backdoorCollider.SetActive(true);
+            //if (currentEvent == waitTimes.Length - 1) backdoorCollider.SetActive(true);
         }
-        else if (currentEvent == waitTimes.Length)
-        {
-            // Prompt player to bark
-            waitingForBark = true;
-            barkUI.SetActive(true);
-        }
+        //else if (currentEvent == waitTimes.Length)
+        //{
+        //    // Prompt player to bark
+        //    waitingForBark = true;
+        //    barkUI.SetActive(true);
+        //}
         else
         {
             Debug.LogError("No Actions left!");
         }
     }
 
-    private void TriggerNewspaperState()
+    private void TriggerGrandmaState()
     {
         if (currentEvent < taskObjects.Length) taskObjects[currentEvent].SetActive(true);
         grandma.TriggerNextState();
