@@ -21,6 +21,7 @@ public class GrandmaController : MonoBehaviour
 
     public Door backDoor;
     public Animator detailedGrandmaAnimator;
+    public GameObject frisbee;
 
 
     void Start()
@@ -109,6 +110,11 @@ public class GrandmaController : MonoBehaviour
         { 
             anim.SetTrigger(startActionTriggerNames[currentState]);
         }
+    }
+
+    public void TriggerFrisbeePickup()
+    {
+        frisbee.SetActive(false);
     }
 
     public void TriggerOpenBackdoor()

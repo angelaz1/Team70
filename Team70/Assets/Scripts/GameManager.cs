@@ -26,8 +26,11 @@ public class GameManager : MonoBehaviour
 
     BGMManager bgmManager;
 
+    Camera innerCamera;
+
     bool moveCamera = false;
     Quaternion currentRotation;
+    Vector3 currentPosition;
     float currentTime = 0;
     float moveCamTime = 3f;
 
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
         simulatorObjects.SetActive(!XRSettings.isDeviceActive);
         actualObjects.SetActive(XRSettings.isDeviceActive);
         cameraMover = GameObject.Find("CameraMover");
+        innerCamera = cameraMover.GetComponentInChildren<Camera>();
 
         foreach (GameObject taskObject in taskObjects)
         {
@@ -50,7 +54,8 @@ public class GameManager : MonoBehaviour
     {
         if (moveCamera)
         {
-            cameraMover.GetComponentInChildren<Camera>().transform.localRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, currentTime / moveCamTime);
+            innerCamera.transform.localRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, currentTime / moveCamTime);
+            innerCamera.transform.localPosition = Vector3.Lerp(currentPosition, Vector3.zero, currentTime / moveCamTime);
             currentTime += Time.deltaTime;
             if (currentTime == 1) moveCamera = false;
         }
@@ -98,6 +103,7 @@ public class GameManager : MonoBehaviour
         cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
         cameraMover.GetComponentInChildren<TrackedPoseDriver>().enabled = false;
         moveCamera = true;
-        currentRotation = cameraMover.GetComponentInChildren<Camera>().transform.localRotation;
+        currentRotation = innerCamera.transform.localRotation;
+        currentPosition = innerCamera.transform.localPosition;
     }
 }
