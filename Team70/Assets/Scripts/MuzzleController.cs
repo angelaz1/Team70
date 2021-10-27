@@ -57,7 +57,7 @@ public class MuzzleController : MonoBehaviour
         selectingObject.transform.SetParent(null);
         selectingObject.transform.rotation = Quaternion.identity;
         if (!dropFromSnapping) selectingObject.transform.position += 0.5f * Vector3.up;
-        selectingObject = null;
+        //selectingObject = null;
     }
 
     private void GrabObject()
