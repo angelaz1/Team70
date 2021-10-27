@@ -9,7 +9,7 @@ public class DogMovement : MonoBehaviour
     public GameObject rightInput;
     public GameObject leftInput;
     public List<GameObject> pace = new List<GameObject>();
-
+    public bool canMove = true;
     
     private List<string> rightPawMovepace = new List<string>();
     private List<string> leftPawMovepace =  new List<string>();
@@ -87,14 +87,18 @@ public class DogMovement : MonoBehaviour
 
     public void RecieveDogPawsBehavior(string pawsInput)
     {
-         if(rightPawMovepace.Contains(pawsInput))
+        if (canMove)
         {
-            addFroceToDogBody();
+            if (rightPawMovepace.Contains(pawsInput))
+            {
+                addFroceToDogBody();
+            }
+            else if (leftPawMovepace.Contains(pawsInput))
+            {
+                addFroceToDogBody();
+            }
         }
-        else if(leftPawMovepace.Contains(pawsInput))
-        {
-            addFroceToDogBody();
-        }
+       
     }
 
     private void addFroceToDogBody()
@@ -142,4 +146,6 @@ public class DogMovement : MonoBehaviour
         }
         return false;
     }
+
+    
 }

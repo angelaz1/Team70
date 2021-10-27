@@ -21,6 +21,7 @@ public class PawsRecognize : MonoBehaviour
     public float recordInterval = 0.05f;
     public float recognitionThreshold = 0.7f;
 
+ 
     public int HandListLimitCount = 10;
     public NewStringEvent onRecognize;
     private void Start()
