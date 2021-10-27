@@ -37,12 +37,13 @@ public class MuzzleController : MonoBehaviour
 
     void CheckForObject(InputAction.CallbackContext ctx)
     { 
-        if (grabbingObject)
-        {
-            Debug.Log("Dropping object");
-            DropObject(false);
-        }
-        else if (!grabbingObject && selectingObject != null)
+        //if (grabbingObject)
+        //{
+        //    Debug.Log("Dropping object");
+        //    DropObject(false);
+        //}
+        //else 
+        if (!grabbingObject && selectingObject != null)
         {
             Debug.Log("Grabbing object");
             GrabObject();

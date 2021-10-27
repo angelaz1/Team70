@@ -42,7 +42,7 @@ public class GrandmaController : MonoBehaviour
             // Finished indoor tasks, trigger music box
             audioSource.clip = startActionClips[currentState];
             audioSource.Play();
-            currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
+            Invoke(nameof(TriggerGrandmaOutside), audioSource.clip.length + 1f);
             anim.SetTrigger(startActionTriggerNames[currentState]);
         }
         else
@@ -51,13 +51,24 @@ public class GrandmaController : MonoBehaviour
         }
     }
 
+    public void TriggerGrandmaOutside()
+    {
+        // TODO: Have grandma walk outside, frisbee, audio
+        //audioSource.clip = finalAudioClip;
+        //audioSource.Play();
+
+        anim.SetTrigger("GoOutdoors");
+
+        currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
+    }
+
     public void TriggerEndingState()
     {
         // TODO: Have grandma walk outside, frisbee, audio
         //audioSource.clip = finalAudioClip;
         //audioSource.Play();
 
-        //anim.SetTrigger("FinalAnimation");
+        anim.SetTrigger("FinalAnimation");
     }
 
     public void CompleteCurrentState()

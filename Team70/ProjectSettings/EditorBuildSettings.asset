@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/Scenes/AngelaTest.unity
+    path: Assets/Scenes/MainGame.unity
     guid: 32a245326724cdf489bb5ab5d7e85ff5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4ab6f6708cc35894fb315d57fc181957, type: 2}

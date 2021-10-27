@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject actualObjects;
 
     public GrandmaController grandma;
-    public GameObject cameraMover;
+    GameObject cameraMover;
 
     // List of wait times before triggering next action in sequence
     public float[] waitTimes;
@@ -23,34 +24,35 @@ public class GameManager : MonoBehaviour
     public GameObject frontdoorCollider;
     public GameObject backdoorCollider;
 
-    public GameObject barkUI;
-    public InputActionReference barkButton;
-
     BGMManager bgmManager;
+
+    bool moveCamera = false;
+    Quaternion currentRotation;
+    float currentTime = 0;
+    float moveCamTime = 3f;
 
     private void Awake()
     {
         simulatorObjects.SetActive(!XRSettings.isDeviceActive);
         actualObjects.SetActive(XRSettings.isDeviceActive);
+        cameraMover = GameObject.Find("CameraMover");
 
         foreach (GameObject taskObject in taskObjects)
         {
             taskObject.SetActive(false);
         }
 
-        barkButton.action.started += CheckForBark;
-
         bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         backdoorCollider.SetActive(false);
     }
 
-    void CheckForBark(InputAction.CallbackContext ctx)
+    private void Update()
     {
-        if (waitingForBark)
+        if (moveCamera)
         {
-            Debug.Log("Woof!");
-            TriggerEndScene();
-            waitingForBark = false;
+            cameraMover.GetComponentInChildren<Camera>().transform.localRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, currentTime / moveCamTime);
+            currentTime += Time.deltaTime;
+            if (currentTime == 1) moveCamera = false;
         }
     }
 
@@ -91,9 +93,11 @@ public class GameManager : MonoBehaviour
 
     public void TriggerEndScene()
     {
-        // Player did bark
-        barkUI.SetActive(false);
+        Debug.Log("Ending scene!");
         grandma.TriggerEndingState();
-        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene"); // Change this to be the correct camera movement
+        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
+        cameraMover.GetComponentInChildren<TrackedPoseDriver>().enabled = false;
+        moveCamera = true;
+        currentRotation = cameraMover.GetComponentInChildren<Camera>().transform.localRotation;
     }
 }

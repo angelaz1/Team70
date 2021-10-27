@@ -6,6 +6,8 @@ public class PassThroughTrigger : MonoBehaviour
 {
     GameManager gameManager;
 
+    public bool startingScene;
+
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -13,7 +15,11 @@ public class PassThroughTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (!startingScene && other.tag == "Frisbee")
+        {
+            gameManager.TriggerEndScene();
+        }
+        if (startingScene && other.tag == "Player")
         {
             gameManager.TriggerNextAction();
             Destroy(gameObject);
