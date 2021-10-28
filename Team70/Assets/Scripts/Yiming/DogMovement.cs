@@ -10,7 +10,7 @@ public class DogMovement : MonoBehaviour
     public GameObject leftInput;
     public List<GameObject> pace = new List<GameObject>();
     public bool canMove = true;
-    
+    private DogSFXManager dogSFXManager;
     private List<string> rightPawMovepace = new List<string>();
     private List<string> leftPawMovepace =  new List<string>();
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class DogMovement : MonoBehaviour
     void Start()
     {
 
+        dogSFXManager = FindObjectOfType<DogSFXManager>();
         normalPlane = new Vector3(0, 1, 0);
         foreach(var item in pace)
         {
@@ -92,10 +93,12 @@ public class DogMovement : MonoBehaviour
             if (rightPawMovepace.Contains(pawsInput))
             {
                 addFroceToDogBody();
+                dogSFXManager.PlayMovingClips(1);
             }
             else if (leftPawMovepace.Contains(pawsInput))
             {
                 addFroceToDogBody();
+                dogSFXManager.PlayMovingClips(0);
             }
         }
        

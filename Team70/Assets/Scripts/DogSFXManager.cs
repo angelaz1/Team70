@@ -7,6 +7,7 @@ public class DogSFXManager : MonoBehaviour
 {
     public AudioClip[] happyClips;
     public AudioClip[] sadClips;
+    public AudioClip[] movingClips;
 
     float delayPlayTime = 0.5f;
 
@@ -30,7 +31,16 @@ public class DogSFXManager : MonoBehaviour
         audioSource.clip = clip;
         Invoke(nameof(PlayClip), delayPlayTime);
     }
-
+    /// <summary>
+    /// 0 left paws 1right paws
+    /// </summary>
+    /// <param name="i"></param>
+    public void PlayMovingClips(int i)
+    {
+        AudioClip clip = movingClips[i];
+        audioSource.clip = clip;
+        Invoke(nameof(PlayClip), delayPlayTime);
+    }
     void PlayClip()
     {
         audioSource.Play();
