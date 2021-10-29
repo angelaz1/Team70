@@ -21,15 +21,15 @@ public class Tutorial3 : TutorialNode
         muzzleLocation = GameObject.Find("MuzzleLocation").GetComponent<Transform>();
         dogMovement = FindObjectOfType<DogMovement>();
         Bone.SetActive(false);
-        StartCoroutine(ShowBone());
+        StartCoroutine(ShowBone(tutorialClip.length));
         StartCoroutine(InstructionSound(tutorialClip.length));
         InitialDevice();
     }
     
 
-    IEnumerator ShowBone()
+    IEnumerator ShowBone(float waitTime)
     {
-        yield return new WaitForSeconds(showBoneTime);
+        yield return new WaitForSeconds(waitTime);
         Transform dog = GameObject.Find("dog").GetComponent<Transform>();
         this.transform.position = transform.position + transform.forward * 20f;
         Bone.SetActive(true);

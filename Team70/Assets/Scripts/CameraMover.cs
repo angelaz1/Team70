@@ -10,12 +10,12 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         whiteScreen = GameObject.Find("WhiteScreen");
-        whiteScreen.SetActive(false);
+        if (whiteScreen) whiteScreen.SetActive(false);
     }
 
     public void TriggerWhiteScreen()
     {
-        whiteScreen.SetActive(true);
+        if (whiteScreen) whiteScreen.SetActive(true);
     }
 
     public void LoadEpilogueScene()

@@ -9,7 +9,7 @@ public class DogSFXManager : MonoBehaviour
     public AudioClip[] sadClips;
     public AudioClip[] movingClips;
 
-    float delayPlayTime = 0.5f;
+    public float delayPlayTime = 0.5f;
 
     AudioSource audioSource;
 

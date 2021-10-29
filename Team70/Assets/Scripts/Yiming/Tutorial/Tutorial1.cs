@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tutorial1 : TutorialNode
 {
-    public float offsetTime = 1f;
+    public float offsetTime = 0.5f;
     private DogSFXManager dogSFXManager;
     private void Start()
     {
@@ -14,20 +14,17 @@ public class Tutorial1 : TutorialNode
         {
             this.GetComponent<AudioSource>().PlayOneShot(tutorialClip);
             offsetTime += tutorialClip.length;
-
         }
 
         StartCoroutine(ResponeBark());
     }
 
-    
     IEnumerator ResponeBark()
     {
         yield return new WaitForSeconds(offsetTime);
 
         dogSFXManager.PlayHappyClip();
         StartCoroutine(ToEnd());
-
     }
 
     IEnumerator ToEnd()
@@ -35,7 +32,4 @@ public class Tutorial1 : TutorialNode
         yield return new WaitForSeconds(2f);
         EndNode();
     }
-
-
-
 }
