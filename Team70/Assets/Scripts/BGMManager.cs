@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
+    public AudioClip musicBoxBGM;
+
     AudioSource audioSource;
     
     bool fadingOut = false;
@@ -36,5 +38,11 @@ public class BGMManager : MonoBehaviour
     public void FadeOutBGM()
     {
         fadingOut = true;
+    }
+
+    public void PlayMusicBoxBGM()
+    {
+        audioSource.clip = musicBoxBGM;
+        fadingIn = true;
     }
 }
