@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,15 +75,7 @@ public class GameManager : MonoBehaviour
         {
             grandma.CompleteCurrentState();
             Invoke(nameof(TriggerGrandmaState), waitTimes[currentEvent]);
-
-            //if (currentEvent == waitTimes.Length - 1) backdoorCollider.SetActive(true);
         }
-        //else if (currentEvent == waitTimes.Length)
-        //{
-        //    // Prompt player to bark
-        //    waitingForBark = true;
-        //    barkUI.SetActive(true);
-        //}
         else
         {
             Debug.LogError("No Actions left!");
