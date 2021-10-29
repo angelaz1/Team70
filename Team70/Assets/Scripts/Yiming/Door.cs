@@ -7,6 +7,14 @@ public class Door : MonoBehaviour
     [SerializeField] Animator doorAni;
     [SerializeField] AudioSource audioSource;
     [SerializeField] bool closeOnExit;
+    [SerializeField] GameObject doorCollider;
+
+    bool canCloseDoorForever = false;
+
+    private void Start()
+    {
+        if (doorCollider) doorCollider.SetActive(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +29,7 @@ public class Door : MonoBehaviour
         if (other.tag == "Dog")
         {
             if (closeOnExit) CloseDoor();
+            if (canCloseDoorForever) GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -33,5 +42,11 @@ public class Door : MonoBehaviour
     public void CloseDoor()
     {
         doorAni.SetBool("isOpen", false);
+    }
+
+    public void TurnOnCollider()
+    {
+        if (doorCollider) doorCollider.SetActive(true);
+        canCloseDoorForever = true;
     }
 }

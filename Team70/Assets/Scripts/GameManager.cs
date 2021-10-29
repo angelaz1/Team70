@@ -64,8 +64,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentEvent == 0)
         {
-            frontdoorCollider.GetComponent<Door>().CloseDoor();
-            frontdoorCollider.SetActive(false);
+            frontdoorCollider.GetComponent<Door>().TurnOnCollider();
             bgmManager.FadeOutBGM();
         }
 

@@ -227,7 +227,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8751a4cd94ca5d749902a8172e54bfef, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -352,7 +352,7 @@ BoxCollider:
   m_GameObject: {fileID: 6554216822594306281}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
@@ -371,6 +371,7 @@ MonoBehaviour:
   doorAni: {fileID: 6554216822433315932}
   audioSource: {fileID: 1602163266248821596}
   closeOnExit: 0
+  doorCollider: {fileID: 0}
 --- !u!1 &6687662274871474710
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +395,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687662274871474710}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.041, y: 0.0216, z: -0.099500015}
   m_LocalScale: {x: 0.71758103, y: 0.9407729, z: 1.097529}
   m_Children:
