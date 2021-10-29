@@ -28,7 +28,7 @@ public class InteractableObjects : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("collision");
+        //print("collision");
         if(other.tag == "Player")
         {
             Grabbed();
@@ -53,7 +53,17 @@ public class InteractableObjects : MonoBehaviour
         }
         else
         {
-            
+            if(headRecognize.currentHold.GetComponent<InteractableObjects>().Priority < Priority)
+            {
+                headRecognize.currentHold.GetComponent<InteractableObjects>().Dropped();
+                this.transform.position = muzzleLocation.position;
+                this.transform.SetParent(muzzleLocation);
+                this.transform.localRotation = Quaternion.identity;
+                rigidbody.isKinematic = true;
+                isGrab = true;
+                headRecognize.GrabSomething(this.gameObject);
+
+            }
         }
       
     }
