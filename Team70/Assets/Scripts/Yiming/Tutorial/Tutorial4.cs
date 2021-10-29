@@ -42,7 +42,7 @@ public class Tutorial4 : TutorialNode
     IEnumerator JumpScene()
     {
         yield return new WaitForSeconds(delayTime);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainGame");
 
     }
 
