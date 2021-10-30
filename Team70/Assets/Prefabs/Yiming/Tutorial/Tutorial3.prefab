@@ -93,19 +93,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &801208245490069488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7206714366536957204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ab6669456494340b53b1081686020c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  appearsound: {fileID: 8300000, guid: bc6c3be3f65b36c40b2f753611b0166c, type: 3}
 --- !u!82 &432616330881950064
 AudioSource:
   m_ObjectHideFlags: 0
@@ -202,6 +189,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &801208245490069488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206714366536957204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab6669456494340b53b1081686020c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appearsound: {fileID: 8300000, guid: bc6c3be3f65b36c40b2f753611b0166c, type: 3}
 --- !u!1 &8567305951918276297
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,8 +366,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.016921, y: 1.3114746, z: 1.5887558}
-  m_Center: {x: 0.046137333, y: 0.15573734, z: -0.015991092}
+  m_Size: {x: 1.5880936, y: 0.31195804, z: 0.4928306}
+  m_Center: {x: 0.013254106, y: 0.09136869, z: -0.044224575}
 --- !u!1001 &7548610603262050373
 PrefabInstance:
   m_ObjectHideFlags: 0

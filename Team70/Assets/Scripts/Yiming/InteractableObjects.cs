@@ -10,7 +10,7 @@ public class InteractableObjects : MonoBehaviour
     //need to shake your head to some speed to throw it away
     //need to use the button?
     //may not
-
+    public bool canGrab = true;//when throw something it willhave 1 or 2 second cold down that can not grab
     public bool isGrab = false;
     public bool canThrow = true;
     public int Priority = 0;
@@ -29,7 +29,7 @@ public class InteractableObjects : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //print("collision");
-        if(other.tag == "Player")
+        if(other.tag == "Player" && canGrab)
         {
             Grabbed();
         }
@@ -70,7 +70,7 @@ public class InteractableObjects : MonoBehaviour
 
     public void Dropped()
     {
-        if (isGrab && canThrow)
+        if (isGrab)
         {
             rigidbody.isKinematic = false;
             this.transform.SetParent(null);
@@ -79,4 +79,14 @@ public class InteractableObjects : MonoBehaviour
         }
     }
 
+    public void CanNotGrabColdDown()
+    {
+        canGrab = false;
+        StartCoroutine(ColdDown());
+    }
+    IEnumerator ColdDown()
+    {
+        yield return new WaitForSeconds(2);
+        canGrab = true;
+    }
 }

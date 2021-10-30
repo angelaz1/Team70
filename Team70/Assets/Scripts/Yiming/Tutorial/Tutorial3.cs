@@ -23,7 +23,7 @@ public class Tutorial3 : TutorialNode
         Bone.SetActive(false);
         StartCoroutine(ShowBone(tutorialClip.length));
         StartCoroutine(InstructionSound(tutorialClip.length));
-        InitialDevice();
+        //InitialDevice();
     }
     
 
@@ -62,16 +62,16 @@ public class Tutorial3 : TutorialNode
         }
 
         
-        if (risPress && (other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
-        else if (lisPress && (other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
+        if ((other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
+        else if ((other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
         
 
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if (risPress && (other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
-        else if (lisPress && (other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (risPress && (other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
+    //    else if (lisPress && (other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
+    //}
 
     public void InitialDevice()
     {
