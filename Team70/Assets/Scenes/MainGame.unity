@@ -4849,7 +4849,7 @@ MonoBehaviour:
   waitTimes:
   - 7
   - 10
-  - 10
+  - 20
   - 10
   taskObjects:
   - {fileID: 1373728264}

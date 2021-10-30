@@ -137,4 +137,24 @@ public class GrandmaController : MonoBehaviour
     {
         detailedGrandmaAnimator.SetBool("isWalking", false);
     }
+
+    public void SitDown()
+    {
+        detailedGrandmaAnimator.SetBool("isSitting", true);
+    }
+
+    public void StandUp()
+    {
+        detailedGrandmaAnimator.SetBool("isSitting", false);
+    }
+
+    public void StartTalking()
+    {
+        detailedGrandmaAnimator.SetBool("isTalking", true);
+    }
+
+    public void StopTalking()
+    {
+        detailedGrandmaAnimator.SetBool("isTalking", false);
+    }
 }
