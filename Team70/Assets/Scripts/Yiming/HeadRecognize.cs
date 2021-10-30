@@ -8,17 +8,25 @@ public class HeadRecognize : MonoBehaviour
     public bool isHold = false;
     public Transform muzzleLocation;
     public Transform XRrig;
+    public float recordTime = 0.01f;
+    public float QueueLimit = 10;//when reach the limit do an calculation of the velocity
+    public Queue<float> angleList = new Queue<float>();
+    public float throwThreshold = 200f;//when angularVelocity's abs larger than this throw the holding thing;
+    public float startFroce = 5f;//throw object with that centrifugalforce
+    public float startVelocity = 5f;//object have that inertia
+
+
+
     private float w = 0;//Head angular velocity
     private float r = 1f;// radius
     private float v = 0f;//holding objects line speed
     private float centrifugalForce = 0;
     private Vector3 escapeVelocity;
-    public float recordTime = 0.01f;
     private float t = 0;
     private Vector3 lastHeadProjectOnXZPlane;
     private Vector3 nowHeadProjectOnXZPlane;
-    //public List<Vector3> ProjectHeadOnXZPlane = new List<Vector3>();
-    public Queue<float> angleList;
+   
+    
 
     private void Start()
     {
@@ -27,18 +35,26 @@ public class HeadRecognize : MonoBehaviour
 
     private void Update()
     {
-        t += Time.deltaTime;
-        if(t >= recordTime)
+        CalculateHeadAngularVelocity();
+        ThrowObjects();
+    }
+
+
+
+    public void ThrowObjects()
+    {
+        if (isHold && currentHold.GetComponent<InteractableObjects>().canThrow)
         {
-            t = 0;
-            nowHeadProjectOnXZPlane = ProjectHeadOnXZPlane();
-            float angle = Vector3.Angle(nowHeadProjectOnXZPlane, lastHeadProjectOnXZPlane);
-            if(Vector3.Cross(nowHeadProjectOnXZPlane, lastHeadProjectOnXZPlane).y > 0)
+            if(Mathf.Abs(w) > throwThreshold)
             {
-                angle = -angle;
+                GameObject go = currentHold;
+                go.GetComponent<InteractableObjects>().CanNotGrabColdDown();
+                go.GetComponent<InteractableObjects>().Dropped();
+                Rigidbody objectRigidbody = go.GetComponent<Rigidbody>();
+                objectRigidbody.velocity = go.transform.right * (w * 2 * Mathf.PI / 360) * r * startVelocity;
+                centrifugalForce = Mathf.Pow((w * 2 * Mathf.PI / 360), 2) * r * startFroce;
+                objectRigidbody.AddForce(go.transform.forward * centrifugalForce, ForceMode.Impulse);
             }
-            lastHeadProjectOnXZPlane = nowHeadProjectOnXZPlane;
-            print(angle);
         }
     }
 
@@ -46,6 +62,40 @@ public class HeadRecognize : MonoBehaviour
 
 
 
+
+
+    /// <summary>
+    /// calculate Head AngularVelocity
+    /// </summary>
+    private void CalculateHeadAngularVelocity()
+    {
+        t += Time.deltaTime;
+        if (angleList.Count < QueueLimit)
+        {  
+            if (t >= recordTime)
+            {
+                t = 0;
+                nowHeadProjectOnXZPlane = ProjectHeadOnXZPlane();
+                float angle = HeadTurnAngle(nowHeadProjectOnXZPlane, lastHeadProjectOnXZPlane);
+                lastHeadProjectOnXZPlane = nowHeadProjectOnXZPlane;
+                angleList.Enqueue(angle);
+            }
+        }
+        else if(angleList.Count == QueueLimit)
+        {
+            if(t >= recordTime)
+            {
+                t = 0;
+                nowHeadProjectOnXZPlane = ProjectHeadOnXZPlane();
+                float angle = HeadTurnAngle(nowHeadProjectOnXZPlane, lastHeadProjectOnXZPlane);
+                lastHeadProjectOnXZPlane = nowHeadProjectOnXZPlane;
+                angleList.Dequeue();
+                angleList.Enqueue(angle);
+                w = Sum(angleList.ToArray()) / (recordTime * QueueLimit);
+                print(w);
+            }
+        }
+    }
 
 
 
@@ -61,6 +111,21 @@ public class HeadRecognize : MonoBehaviour
         headVector = Vector3.ProjectOnPlane(headVector, Vector3.up);
         headVector = headVector.normalized;
         return headVector;
+    }
+    /// <summary>
+    /// two vector3's angle with dirction
+    /// </summary>
+    /// <param name="now"></param>
+    /// <param name="last"></param>
+    /// <returns></returns>
+    public float HeadTurnAngle(Vector3 now, Vector3 last)
+    {
+        float newAngle = Vector3.Angle(now, last);
+        if(Vector3.Cross(now, last).y > 0)
+        {
+            newAngle = -newAngle;
+        }
+        return newAngle;
     }
 
 
@@ -80,4 +145,13 @@ public class HeadRecognize : MonoBehaviour
     }
 
   
+    public float Sum(float[] array)
+    {
+        float sum = 0;
+        foreach(var item in array)
+        {
+            sum += (float)item;
+        }
+        return sum;
+    }
 }
