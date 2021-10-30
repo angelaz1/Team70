@@ -167,4 +167,14 @@ public class GrandmaController : MonoBehaviour
     {
         detailedGrandmaAnimator.SetBool("isReading", false);
     }
+
+    public void PickUpObject()
+    {
+        detailedGrandmaAnimator.SetTrigger("pickUpObject");
+    }
+
+    public void ThrowFrisbee()
+    {
+        detailedGrandmaAnimator.SetTrigger("throwFrisbee");
+    }
 }
