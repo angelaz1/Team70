@@ -157,4 +157,14 @@ public class GrandmaController : MonoBehaviour
     {
         detailedGrandmaAnimator.SetBool("isTalking", false);
     }
+
+    public void StartReading()
+    {
+        detailedGrandmaAnimator.SetBool("isReading", true);
+    }
+
+    public void StopReading()
+    {
+        detailedGrandmaAnimator.SetBool("isReading", false);
+    }
 }

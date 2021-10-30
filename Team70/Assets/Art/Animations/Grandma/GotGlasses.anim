@@ -82,15 +82,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.68333334
         value: {x: 0.35, y: 3.151, z: 19.14}
-        inSlope: {x: 0, y: 0, z: 2.9224052}
-        outSlope: {x: 0, y: 0, z: 2.9224052}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 1.0166667
+        value: {x: 0.4333206, y: 3.151, z: 19.006687}
+        inSlope: {x: 0.25605845, y: 0, z: -0.40969002}
+        outSlope: {x: 0.25605845, y: 0, z: -0.40969002}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.1333333
-        value: {x: 0.8943166, y: 3.151, z: 19.785364}
+        value: {x: 0.45, y: 3.5, z: 18.98}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -131,7 +140,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1333333
+    m_StopTime: 1.1666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -179,7 +188,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.1333333
-        value: 0.8943166
+        value: 0.45
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -208,6 +217,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.25
         value: 3.151
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.0166667
+        value: 3.151
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.1333333
+        value: 3.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -245,15 +272,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.68333334
         value: 19.14
-        inSlope: 2.9224052
-        outSlope: 2.9224052
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.1333333
-        value: 19.785364
+        value: 18.98
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -455,6 +482,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.1333333
     functionName: StopWalkCycle
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: StartReading
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
