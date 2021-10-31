@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4674068410681527832}
   - component: {fileID: 4674068410681527835}
   - component: {fileID: 4674068410681527834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BouncingBall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

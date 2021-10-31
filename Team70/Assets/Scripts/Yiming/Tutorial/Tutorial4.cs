@@ -30,8 +30,9 @@ public class Tutorial4 : TutorialNode
             Color now = RenderSettings.skybox.GetColor("_Tint");
             now = Color.Lerp(now, w, .2f * Time.deltaTime);
             RenderSettings.skybox.SetColor("_Tint", now);
+
         }
-        
+
     }
     public override void EndNode()
     {
@@ -42,6 +43,7 @@ public class Tutorial4 : TutorialNode
     IEnumerator JumpScene()
     {
         yield return new WaitForSeconds(delayTime);
+        
         SceneManager.LoadScene("MainGame");
 
     }

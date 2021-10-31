@@ -855,14 +855,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5298680449640104324, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5298680449640104324, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8776561111754514753, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -907,53 +899,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Size.x
-      value: 0.41605797
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Size.y
-      value: 0.07585859
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Size.z
-      value: 0.3315836
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Center.x
-      value: 0.023395732
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Center.y
-      value: -0.09111595
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Center.z
-      value: -0.19115065
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514754, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8776561111754514757, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
       propertyPath: m_Name
       value: dog
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: MoveSpeed
-      value: 3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: upWardShake
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: velocityLimit
-      value: 6.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: pace.Array.size
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
       propertyPath: pace.Array.data[0]
@@ -987,14 +935,6 @@ PrefabInstance:
       propertyPath: pace.Array.data[7]
       value: 
       objectReference: {fileID: 959083657}
-    - target: {fileID: 8776561112360559732, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8776561112950410697, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
 --- !u!1 &1845545273 stripped
@@ -1315,10 +1255,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4674068410681527834, guid: ff8d2b819b234d7459a59a9132af1449, type: 3}
-      propertyPath: canThrow
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4674068410681527837, guid: ff8d2b819b234d7459a59a9132af1449, type: 3}
       propertyPath: m_Name
       value: BouncingBall (1)
@@ -1400,10 +1336,6 @@ PrefabInstance:
     - target: {fileID: 6723566603402670504, guid: 74eb1b30aa7d2454eb02e5f2d688e970, type: 3}
       propertyPath: m_Name
       value: BouncingBall
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723566603402670546, guid: 74eb1b30aa7d2454eb02e5f2d688e970, type: 3}
-      propertyPath: canThrow
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6723566603402670549, guid: 74eb1b30aa7d2454eb02e5f2d688e970, type: 3}
       propertyPath: m_RootOrder

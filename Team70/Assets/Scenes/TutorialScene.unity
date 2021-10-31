@@ -1816,7 +1816,7 @@ PrefabInstance:
       objectReference: {fileID: 500442948}
     - target: {fileID: 1127139101063104775, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
       propertyPath: recognitionThreshold
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1127139101063104775, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
       propertyPath: onRecognize.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1832,7 +1832,7 @@ PrefabInstance:
       objectReference: {fileID: 956075767}
     - target: {fileID: 1127139101063104792, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
       propertyPath: recognitionThreshold
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1127139101063104792, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
       propertyPath: onRecognize.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1943,6 +1943,10 @@ PrefabInstance:
     - target: {fileID: 8776561111754514757, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
       propertyPath: m_Name
       value: dog
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
+      propertyPath: MoveSpeed
+      value: 3.97
       objectReference: {fileID: 0}
     - target: {fileID: 8776561111754514782, guid: b26911cfbc1dbfa47bcd15dd648de8c1, type: 3}
       propertyPath: pace.Array.data[0]
