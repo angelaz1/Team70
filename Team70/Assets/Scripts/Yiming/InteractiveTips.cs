@@ -7,16 +7,18 @@ public class InteractiveTips : MonoBehaviour
     // Start is called before the first frame update
     public GameObject interactableTips;
     public InteractableObjects io;
+    private bool onlyOnce = true;
     private void Awake()
     {
         interactableTips.SetActive(false);
         io = GetComponentInParent<InteractableObjects>();
+        
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!io.isGrab && other.tag == "Dog")
+        if (!io.isGrab && other.tag == "Dog" && onlyOnce)
         {
             interactableTips.SetActive(true);
         }    
@@ -37,6 +39,10 @@ public class InteractiveTips : MonoBehaviour
             if (io.isGrab)
             {
                 interactableTips.SetActive(false);
+                if (!io.canThrow)
+                {
+                    onlyOnce = false;
+                }
             }
         }
     }
