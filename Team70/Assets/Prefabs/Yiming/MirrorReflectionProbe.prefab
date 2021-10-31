@@ -42,9 +42,9 @@ ReflectionProbe:
   serializedVersion: 2
   m_Type: 0
   m_Mode: 1
-  m_RefreshMode: 0
-  m_TimeSlicingMode: 0
-  m_Resolution: 512
+  m_RefreshMode: 1
+  m_TimeSlicingMode: 1
+  m_Resolution: 256
   m_UpdateFrequency: 0
   m_BoxSize: {x: 10, y: 10, z: 10}
   m_BoxOffset: {x: 0, y: 0, z: 0}
@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 4996025011928394420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.87, z: 0}
-  m_LocalScale: {x: 2, y: 4, z: 0.1}
+  m_LocalScale: {x: 0.6497158, y: 0.91358376, z: 0.79176617}
   m_Children:
   - {fileID: 4996025010956537727}
   m_Father: {fileID: 0}
