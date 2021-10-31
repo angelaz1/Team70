@@ -21,8 +21,15 @@ public class GrandmaController : MonoBehaviour
 
     public Door backDoor;
     public Animator detailedGrandmaAnimator;
-    public GameObject frisbee;
 
+    [Header("Task Objects")]
+    public GameObject inWorldNewspaper;
+    public GameObject newspaper;
+    public GameObject inWorldGlasses;
+    public GameObject glasses;
+    public GameObject inWorldMedicine;
+    public GameObject inWorldFrisbee;
+    public GameObject frisbee;
 
     void Start()
     {
@@ -176,5 +183,33 @@ public class GrandmaController : MonoBehaviour
     public void ThrowFrisbee()
     {
         detailedGrandmaAnimator.SetTrigger("throwFrisbee");
+    }
+
+    public void PickUpNewspaper()
+    {
+        inWorldNewspaper.SetActive(false);
+        newspaper.SetActive(true);
+    }
+
+    public void PutAwayNewspaper()
+    {
+        newspaper.SetActive(false);
+    }
+
+    public void PickUpGlasses()
+    {
+        inWorldGlasses.SetActive(false);
+        glasses.SetActive(true);
+    }
+
+    public void PickUpMedicine()
+    {
+        inWorldMedicine.SetActive(false);
+    }
+
+    public void PickUpFrisbee()
+    {
+        inWorldFrisbee.SetActive(false);
+        frisbee.SetActive(true);
     }
 }
