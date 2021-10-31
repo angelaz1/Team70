@@ -183,18 +183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6430886149350940375, guid: 221ce85c39d67224285c392d9bdf931c, type: 3}
-      propertyPath: delayPlayTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430886149350940375, guid: 221ce85c39d67224285c392d9bdf931c, type: 3}
-      propertyPath: movingClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: cc91fd473923c204981632503b2702f9, type: 3}
-    - target: {fileID: 6430886149350940375, guid: 221ce85c39d67224285c392d9bdf931c, type: 3}
-      propertyPath: movingClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9e6658f3b43b80d4b9aedb8b632e838f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221ce85c39d67224285c392d9bdf931c, type: 3}
 --- !u!1 &88969444 stripped
@@ -1342,6 +1330,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09669b72f1474c41b0254dc886a01d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1530418066
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1805353828, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.55383146
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805353828, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_Center.x
+      value: 0.1436026
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351731107757583066, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_Name
+      value: Tutorial4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327045813263611566, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
 --- !u!1 &1575486037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1127139100300527709, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
