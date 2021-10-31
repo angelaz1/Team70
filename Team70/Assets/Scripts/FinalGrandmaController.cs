@@ -8,13 +8,11 @@ public class FinalGrandmaController : MonoBehaviour
 
     int currentClip = 0;
     AudioSource audioSource;
-    DogSFXManager dogSFXManager;
     EndingManager endingManager;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        dogSFXManager = GameObject.Find("DogSFXManager").GetComponent<DogSFXManager>();
         endingManager = GameObject.Find("EndingManager").GetComponent<EndingManager>();
         StartCoroutine(PlayClips());
     }
@@ -25,10 +23,10 @@ public class FinalGrandmaController : MonoBehaviour
         {
             audioSource.clip = finalAudioClips[currentClip];
             audioSource.Play();
-            yield return new WaitForSeconds(audioSource.clip.length);
-            if (currentClip == 0) dogSFXManager.PlaySadClip();
-            if (currentClip == 1) dogSFXManager.PlayHappyClip();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(audioSource.clip.length + 0.2f);
+            //if (currentClip == 0) dogSFXManager.PlaySadClip();
+            //if (currentClip == 1) dogSFXManager.PlayHappyClip();
+            //yield return new WaitForSeconds(1.5f);
             currentClip++;
         }
 

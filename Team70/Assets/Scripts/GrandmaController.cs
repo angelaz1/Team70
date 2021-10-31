@@ -21,6 +21,7 @@ public class GrandmaController : MonoBehaviour
 
     public Door backDoor;
     public Animator detailedGrandmaAnimator;
+    public List<AudioClip> finalAudioClips;
 
     [Header("Task Objects")]
     public GameObject inWorldNewspaper;
@@ -62,10 +63,6 @@ public class GrandmaController : MonoBehaviour
 
     public void TriggerGrandmaOutside()
     {
-        // TODO: Have grandma walk outside, frisbee, audio
-        //audioSource.clip = finalAudioClip;
-        //audioSource.Play();
-
         anim.SetTrigger("GoOutdoors");
 
         currentThoughtBubble = Instantiate(thoughtBubbles[currentState], thoughtCanvas.transform);
@@ -73,11 +70,20 @@ public class GrandmaController : MonoBehaviour
 
     public void TriggerEndingState()
     {
-        // TODO: Have grandma walk outside, frisbee, audio
-        //audioSource.clip = finalAudioClip;
-        //audioSource.Play();
-
         anim.SetTrigger("FinalAnimation");
+        StartCoroutine(PlayFinalClips());
+    }
+
+    IEnumerator PlayFinalClips()
+    {
+        int finalIndex = 0;
+        while (finalIndex < finalAudioClips.Count)
+        {
+            audioSource.clip = finalAudioClips[finalIndex];
+            audioSource.Play();
+            yield return new WaitForSeconds(finalAudioClips[finalIndex].length);
+            finalIndex++;
+        }
     }
 
     public void CompleteCurrentState()
@@ -96,17 +102,15 @@ public class GrandmaController : MonoBehaviour
 
         if (currentState >= 0 && currentState < finishActionClips.Count)
         {
-            audioSource.clip = finishActionClips[currentState];
-            audioSource.Play();
+            Invoke(nameof(PlayCurrentFinishClip), 0.5f);
         }
     }
 
     void StartNextState()
     {
         if (currentState < startActionClips.Count)
-        { 
-            audioSource.clip = startActionClips[currentState];
-            audioSource.Play();
+        {
+            Invoke(nameof(PlayCurrentStartClip), 0.5f);
         }
 
         if (currentState < thoughtBubbles.Count) 
@@ -120,6 +124,19 @@ public class GrandmaController : MonoBehaviour
         }
     }
 
+    void PlayCurrentFinishClip()
+    {
+        audioSource.clip = finishActionClips[currentState];
+        audioSource.Play();
+    }
+
+    void PlayCurrentStartClip()
+    {
+        audioSource.clip = startActionClips[currentState];
+        audioSource.Play();
+    }
+
+    #region animation
     public void TriggerFrisbeePickup()
     {
         frisbee.SetActive(false);
@@ -212,4 +229,5 @@ public class GrandmaController : MonoBehaviour
         inWorldFrisbee.SetActive(false);
         frisbee.SetActive(true);
     }
+    #endregion
 }

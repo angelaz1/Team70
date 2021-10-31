@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3953266698416424556}
   - component: {fileID: 3862360720945010297}
   - component: {fileID: 8424260810919441571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PawprintLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
