@@ -454,9 +454,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 110936358}
-  - component: {fileID: 110936357}
-  - component: {fileID: 110936356}
-  - component: {fileID: 110936355}
   - component: {fileID: 110936360}
   - component: {fileID: 110936359}
   - component: {fileID: 110936354}
@@ -507,69 +504,6 @@ MonoBehaviour:
   inWorldMedicine: {fileID: 1395259442}
   inWorldFrisbee: {fileID: 5114774314670628315}
   frisbee: {fileID: 1509308269}
---- !u!136 &110936355
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110936353}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &110936356
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110936353}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &110936357
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110936353}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &110936358
 Transform:
   m_ObjectHideFlags: 0
@@ -598,7 +532,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10272,6 +10206,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4657877265825355987, guid: 1d78c2704a0a6ee46b781d667b7cc643, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657877265825355987, guid: 1d78c2704a0a6ee46b781d667b7cc643, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.408
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657877265825355987, guid: 1d78c2704a0a6ee46b781d667b7cc643, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 5276018155909553712, guid: 1d78c2704a0a6ee46b781d667b7cc643, type: 3}
       propertyPath: m_LocalScale.z
       value: -1.097529
@@ -10286,7 +10232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438068327519132359, guid: 1d78c2704a0a6ee46b781d667b7cc643, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d78c2704a0a6ee46b781d667b7cc643, type: 3}
@@ -10646,6 +10592,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 752647644}
+    - target: {fileID: 1148663538587223645, guid: 9b47a67f55f605841b3e57ffa518224d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1148663539787113152, guid: 9b47a67f55f605841b3e57ffa518224d, type: 3}
       propertyPath: m_Name
       value: GlassesObject
@@ -12366,6 +12316,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 15.19
       objectReference: {fileID: 0}
+    - target: {fileID: 532107220541326548, guid: 274840e336c8aec49a48af01ef9330ce, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 532107220541326549, guid: 274840e336c8aec49a48af01ef9330ce, type: 3}
       propertyPath: droppedClip
       value: 
@@ -13550,6 +13504,10 @@ PrefabInstance:
     - target: {fileID: 3999770514028640835, guid: 8681c0ccf61f6234c9a48e4be45699c1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999770514379333523, guid: 8681c0ccf61f6234c9a48e4be45699c1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5253944674034783535, guid: 8681c0ccf61f6234c9a48e4be45699c1, type: 3}
       propertyPath: m_Enabled
@@ -14972,6 +14930,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 752647644}
+    - target: {fileID: 9065756886698173101, guid: ee90e8d5718d82d459e32feb1e38154e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee90e8d5718d82d459e32feb1e38154e, type: 3}
 --- !u!1 &9106141866807849921

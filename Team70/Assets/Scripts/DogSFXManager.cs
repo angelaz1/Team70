@@ -21,6 +21,7 @@ public class DogSFXManager : MonoBehaviour
     public void PlayHappyClip() 
     {
         AudioClip clip = happyClips[Random.Range(0, happyClips.Length - 1)];
+        audioSource.volume = 0.5f;
         audioSource.clip = clip;
         Invoke(nameof(PlayClip), delayPlayTime);
     }
@@ -28,6 +29,7 @@ public class DogSFXManager : MonoBehaviour
     public void PlaySadClip()
     {
         AudioClip clip = sadClips[Random.Range(0, sadClips.Length - 1)];
+        audioSource.volume = 0.5f;
         audioSource.clip = clip;
         Invoke(nameof(PlayClip), delayPlayTime);
     }
@@ -38,6 +40,7 @@ public class DogSFXManager : MonoBehaviour
     public void PlayMovingClips(int i)
     {
         AudioClip clip = movingClips[i];
+        audioSource.volume = 0.2f;
         audioSource.clip = clip;
         Invoke(nameof(PlayClip), delayPlayTime);
     }
