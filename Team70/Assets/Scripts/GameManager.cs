@@ -94,6 +94,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Ending scene!");
         grandma.TriggerEndingState();
+
+        GameObject dog = GameObject.Find("dog");
+        if (dog)
+        {
+            dog.GetComponent<Rigidbody>().isKinematic = true;
+            dog.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        }
+
         cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
         cameraMover.GetComponentInChildren<TrackedPoseDriver>().enabled = false;
         moveCamera = true;
