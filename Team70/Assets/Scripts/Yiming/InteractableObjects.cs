@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]
+
 public class InteractableObjects : MonoBehaviour
 {
     //not a task object, can be pick up
@@ -16,6 +15,7 @@ public class InteractableObjects : MonoBehaviour
     public int Priority = 0;
     private HeadRecognize headRecognize;
     private Transform muzzleLocation;
+    [Tooltip("Priority of object when being grabbed. Higher number = higher priority")]
     private Rigidbody rigidbody;
     public float coldDown = 1f;
 
@@ -44,12 +44,7 @@ public class InteractableObjects : MonoBehaviour
         {
             if (!isGrab)
             {
-                this.transform.position = muzzleLocation.position;
-                this.transform.SetParent(muzzleLocation);
-                this.transform.localRotation = Quaternion.identity;
-                rigidbody.isKinematic = true;
-                isGrab = true;
-                headRecognize.GrabSomething(this.gameObject);
+                GrabObject();
             }
         }
         else
@@ -57,16 +52,26 @@ public class InteractableObjects : MonoBehaviour
             if(headRecognize.currentHold.GetComponent<InteractableObjects>().Priority < Priority)
             {
                 headRecognize.currentHold.GetComponent<InteractableObjects>().Dropped();
-                this.transform.position = muzzleLocation.position;
-                this.transform.SetParent(muzzleLocation);
-                this.transform.localRotation = Quaternion.identity;
-                rigidbody.isKinematic = true;
-                isGrab = true;
-                headRecognize.GrabSomething(this.gameObject);
-
+                GrabObject();
             }
         }
-      
+    }
+
+    void GrabObject()
+    {
+        this.transform.position = muzzleLocation.position;
+        this.transform.SetParent(muzzleLocation);
+        this.transform.localRotation = Quaternion.identity;
+        rigidbody.isKinematic = true;
+        isGrab = true;
+        headRecognize.GrabSomething(this.gameObject);
+
+        SnappableObject snappable = GetComponent<SnappableObject>();
+        if (snappable)
+        {
+            // This is a task object
+            snappable.SetGrabbed(true);
+        }
     }
 
     public void Dropped()
@@ -77,6 +82,13 @@ public class InteractableObjects : MonoBehaviour
             this.transform.SetParent(null);
             isGrab = false;
             headRecognize.DropSomething();
+
+            SnappableObject snappable = GetComponent<SnappableObject>();
+            if (snappable)
+            {
+                // This is a task object
+                snappable.SetGrabbed(false);
+            }
         }
     }
 
@@ -85,6 +97,7 @@ public class InteractableObjects : MonoBehaviour
         canGrab = false;
         StartCoroutine(ColdDown());
     }
+
     IEnumerator ColdDown()
     {
         yield return new WaitForSeconds(coldDown);

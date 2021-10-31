@@ -20,15 +20,19 @@ public class CameraMover : MonoBehaviour
     public void TriggerWhiteScreen()
     {
         if (whiteScreen) whiteScreen.SetActive(true);
-        if (audioSource)
-        {
-            audioSource.clip = whiteScreenSound;
-            audioSource.Play();
-        }
     }
 
     public void LoadEpilogueScene()
     {
         SceneManager.LoadScene("EndingScene");
+    }
+
+    public void TriggerWhiteScreenSFX()
+    {
+        if (audioSource)
+        {
+            audioSource.clip = whiteScreenSound;
+            audioSource.Play();
+        }
     }
 }

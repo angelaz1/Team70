@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour
             grandma.CompleteCurrentState();
             Invoke(nameof(TriggerGrandmaState), waitTimes[currentEvent]);
         }
+        else if (currentEvent == waitTimes.Length)
+        {
+            TriggerEndScene();
+        }
         else
         {
             Debug.LogError("No Actions left!");

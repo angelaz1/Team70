@@ -6,7 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(AudioSource))]
 public class SnappableObject : MonoBehaviour
 {
-    XRGrabInteractable interactable;
     bool isSnapped = false;
     bool isGrabbed = false;
 
@@ -20,7 +19,6 @@ public class SnappableObject : MonoBehaviour
 
     private void Start()
     {
-        interactable = GetComponent<XRGrabInteractable>();
         parentTaskObject = GetComponentInParent<TaskObject>();
         audioSource = GetComponent<AudioSource>();
         dogSFXManager = GameObject.Find("DogSFXManager").GetComponent<DogSFXManager>();
@@ -29,7 +27,7 @@ public class SnappableObject : MonoBehaviour
     public void SnapToLocation(Vector3 position)
     {
         isSnapped = true;
-        interactable.enabled = false;
+        GetComponent<InteractableObjects>().Dropped();
         GetComponent<Rigidbody>().isKinematic = true;
         transform.position = position;
         transform.rotation = Quaternion.identity;
