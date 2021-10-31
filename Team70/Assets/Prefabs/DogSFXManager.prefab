@@ -51,8 +51,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f3ab5738a5adcb4593a673b892b0237, type: 3}
   - {fileID: 8300000, guid: f39cf0748d5b4e04e9d6d2583bc9dd4a, type: 3}
   movingClips:
-  - {fileID: 8300000, guid: cc91fd473923c204981632503b2702f9, type: 3}
-  - {fileID: 8300000, guid: 9e6658f3b43b80d4b9aedb8b632e838f, type: 3}
+  - {fileID: 8300000, guid: 15153a2825bd6fc4f9aff63568ae9677, type: 3}
+  - {fileID: 8300000, guid: c98cffc779275d54ab2656522b28e08c, type: 3}
   delayPlayTime: 0
 --- !u!82 &6430886149350940374
 AudioSource:
