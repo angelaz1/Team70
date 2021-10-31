@@ -48,7 +48,11 @@ public class SnappableObject : MonoBehaviour
             audioSource.clip = droppedClip;
             audioSource.Play();
 
-            if (isSnapped) dogSFXManager.PlayHappyClip();
+            if (isSnapped) 
+            {
+                dogSFXManager.PlayHappyClip();
+                Destroy(GetComponent<InteractableObjects>());
+            }
             else dogSFXManager.PlaySadClip();
         }
     }
