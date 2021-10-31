@@ -29,7 +29,7 @@ public class Tutorial1 : TutorialNode
 
     IEnumerator ToEnd()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         EndNode();
     }
 }

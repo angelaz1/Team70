@@ -974,6 +974,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1006516950}
     - target: {fileID: 1127139101063104775, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
+      propertyPath: recognitionThreshold
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127139101063104775, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
       propertyPath: onRecognize.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2119765536}
@@ -989,6 +993,10 @@ PrefabInstance:
       propertyPath: handT
       value: 
       objectReference: {fileID: 850730023}
+    - target: {fileID: 1127139101063104792, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
+      propertyPath: recognitionThreshold
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1127139101063104792, guid: 820aca984f1ac874486e6fd8ec4dd120, type: 3}
       propertyPath: onRecognize.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1139,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228689505607554737, guid: 6f881396e1691b74f81ee71c66997d90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3228689505607554737, guid: 6f881396e1691b74f81ee71c66997d90, type: 3}
       propertyPath: m_LocalPosition.z

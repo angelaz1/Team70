@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 3351731107757583066}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 2260765027909487687}
   - {fileID: 4848926972607064953}
@@ -229,6 +229,7 @@ MonoBehaviour:
   nextNode: {fileID: 0}
   tutorialClip: {fileID: 8300000, guid: b180cc289f7510e498a7d2f1ddc7562f, type: 3}
   tutorialManager: {fileID: 0}
+  tutorialText: Press grip to move back
   delayTime: 5
 --- !u!65 &1805353828
 BoxCollider:
@@ -241,8 +242,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4905784, y: 0.67698866, z: 0.5359586}
-  m_Center: {x: -0.21053952, y: -0.16150568, z: -0.22461864}
+  m_Size: {x: 0.46480656, y: 0.2717555, z: 0.30899942}
+  m_Center: {x: 0.09909019, y: 0.041111097, z: 0.008987635}
 --- !u!1 &4076318484354825030
 GameObject:
   m_ObjectHideFlags: 0

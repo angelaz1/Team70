@@ -38,7 +38,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3204095169697041833}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -438,16 +438,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf730e3c488b4144393f8a7344c9fc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num: 0
+  num: 2
   nextNode: {fileID: 7386268635453600776, guid: 081bbc90c3ae7e04a92ad536e88d2f5f, type: 3}
   tutorialClip: {fileID: 8300000, guid: c4c3157527ea8864bbd00716e77cf68b, type: 3}
   tutorialManager: {fileID: 0}
+  tutorialText: Move your head to pick up
   GrabBoneInstruction: {fileID: 8300000, guid: bd2a6541d65ed3c4a9219b22c33fee1f, type: 3}
   Bone: {fileID: 7206714366536957204}
   showBoneTime: 1
   isGrab: 0
   risPress: 0
   lisPress: 0
+  boneOriginal:
+  - {fileID: 2100000, guid: c71b19e3367bfce46a05595f702a5f1c, type: 2}
 --- !u!65 &6710971820759366839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -531,7 +534,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: af34b188b5e5d44408f8dd51a93dfa4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c71b19e3367bfce46a05595f702a5f1c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: af34b188b5e5d44408f8dd51a93dfa4e, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 

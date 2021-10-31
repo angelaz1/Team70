@@ -17,6 +17,7 @@ public class InteractableObjects : MonoBehaviour
     private HeadRecognize headRecognize;
     private Transform muzzleLocation;
     private Rigidbody rigidbody;
+    public float coldDown = 1f;
 
     private void Start()
     {
@@ -86,7 +87,7 @@ public class InteractableObjects : MonoBehaviour
     }
     IEnumerator ColdDown()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(coldDown);
         canGrab = true;
     }
 }

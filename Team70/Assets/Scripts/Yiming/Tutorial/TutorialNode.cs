@@ -9,6 +9,7 @@ public class TutorialNode : MonoBehaviour
     public TutorialNode nextNode;
     public AudioClip tutorialClip;
     public TutorialManager tutorialManager;
+    public string tutorialText;
     private void OnEnable()
     {
         tutorialManager = FindObjectOfType<TutorialManager>();

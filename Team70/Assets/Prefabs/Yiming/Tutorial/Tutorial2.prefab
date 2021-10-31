@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5153476164966409492}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.064, y: -0.26, z: -8.053}
+  m_LocalPosition: {x: 0.064, y: -0.26, z: -12.22}
   m_LocalScale: {x: 16.121, y: 16.121, z: 16.121}
   m_Children:
   - {fileID: 923939013405004656}
@@ -457,6 +457,7 @@ MonoBehaviour:
   nextNode: {fileID: 8177309980367479135, guid: f49fe158c247d8e4a96e83fdc27131f4, type: 3}
   tutorialClip: {fileID: 8300000, guid: 6ef3f7a51914dc74095141730bbc26e8, type: 3}
   tutorialManager: {fileID: 0}
+  tutorialText: Shake your Hand to Move
 --- !u!1 &6292033273508150645
 GameObject:
   m_ObjectHideFlags: 0

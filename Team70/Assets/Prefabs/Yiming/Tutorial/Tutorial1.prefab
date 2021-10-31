@@ -144,4 +144,5 @@ MonoBehaviour:
   nextNode: {fileID: -6091635519622750779, guid: 47d704a5173504645982e14948e5c13a, type: 3}
   tutorialClip: {fileID: 8300000, guid: b36b52af9b87b414eb9dbfe9f64dc4e9, type: 3}
   tutorialManager: {fileID: 0}
+  tutorialText: 
   offsetTime: 0.2

@@ -15,6 +15,7 @@ public class Tutorial3 : TutorialNode
     public bool isGrab = false;
     public bool risPress = false;
     public bool lisPress = false;
+    public Material[] boneOriginal;
     private void Start()
     {
         if (tutorialClip) { this.GetComponent<AudioSource>().PlayOneShot(tutorialClip); }
@@ -98,6 +99,7 @@ public class Tutorial3 : TutorialNode
         this.transform.localRotation = Quaternion.identity;
         //this.GetComponent<Rigidbody>().freezeRotation = true;
         isGrab = true;
+        this.GetComponentInChildren<MeshRenderer>().materials = boneOriginal;
         EndNode();
     }
     public override void EndNode()
