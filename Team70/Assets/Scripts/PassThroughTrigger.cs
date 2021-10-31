@@ -5,19 +5,21 @@ using UnityEngine;
 public class PassThroughTrigger : MonoBehaviour
 {
     GameManager gameManager;
+    BGMManager bgmManager;
 
     public bool startingScene;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!startingScene && other.tag == "Frisbee")
+        if (!startingScene && other.tag == "Player")
         {
-            gameManager.TriggerEndScene();
+            bgmManager.PlayBackyardBGM();
         }
         if (startingScene && other.tag == "Player")
         {

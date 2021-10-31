@@ -5,6 +5,7 @@ using UnityEngine;
 public class BGMManager : MonoBehaviour
 {
     public AudioClip musicBoxBGM;
+    public AudioClip backyardBGM;
 
     AudioSource audioSource;
     
@@ -43,6 +44,14 @@ public class BGMManager : MonoBehaviour
     public void PlayMusicBoxBGM()
     {
         audioSource.clip = musicBoxBGM;
+        audioSource.Play();
+        fadingIn = true;
+    }
+
+    public void PlayBackyardBGM()
+    {
+        audioSource.clip = backyardBGM;
+        audioSource.Play();
         fadingIn = true;
     }
 }
