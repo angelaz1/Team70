@@ -14,8 +14,7 @@ public class Tutorial1 : TutorialNode
         {
             this.GetComponent<AudioSource>().PlayOneShot(tutorialClip);
             offsetTime += tutorialClip.length;
-        }
-
+        }      
         StartCoroutine(ResponeBark());
     }
 

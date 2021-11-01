@@ -457,7 +457,8 @@ MonoBehaviour:
   nextNode: {fileID: 8177309980367479135, guid: f49fe158c247d8e4a96e83fdc27131f4, type: 3}
   tutorialClip: {fileID: 8300000, guid: 6ef3f7a51914dc74095141730bbc26e8, type: 3}
   tutorialManager: {fileID: 0}
-  tutorialText: Shake your Hand to Move
+  tutorialText: 'Shake your Hand to Move '
+  otherTurtorialTxt: ' Press grip to move back'
 --- !u!1 &6292033273508150645
 GameObject:
   m_ObjectHideFlags: 0

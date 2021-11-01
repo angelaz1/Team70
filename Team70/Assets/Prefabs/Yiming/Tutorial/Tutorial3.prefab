@@ -451,6 +451,7 @@ MonoBehaviour:
   lisPress: 0
   boneOriginal:
   - {fileID: 2100000, guid: c71b19e3367bfce46a05595f702a5f1c, type: 2}
+  pickUpSound: {fileID: 8300000, guid: ab3a82872f159d348a6b6ff555aab211, type: 3}
 --- !u!65 &6710971820759366839
 BoxCollider:
   m_ObjectHideFlags: 0
