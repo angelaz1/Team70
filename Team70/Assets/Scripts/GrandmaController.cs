@@ -26,6 +26,7 @@ public class GrandmaController : MonoBehaviour
     [Header("Task Objects")]
     public GameObject inWorldNewspaper;
     public GameObject newspaper;
+    public GameObject openNewspaper;
     public GameObject inWorldGlasses;
     public GameObject glasses;
     public GameObject inWorldMedicine;
@@ -208,9 +209,16 @@ public class GrandmaController : MonoBehaviour
         newspaper.SetActive(true);
     }
 
+    public void OpenNewspaper()
+    {
+        newspaper.SetActive(false);
+        openNewspaper.SetActive(true);
+    }
+
     public void PutAwayNewspaper()
     {
         newspaper.SetActive(false);
+        openNewspaper.SetActive(false);
     }
 
     public void PickUpGlasses()
