@@ -7,17 +7,19 @@ public class BGMManager : MonoBehaviour
     public AudioClip musicBoxBGM;
     public AudioClip backyardBGM;
 
-    AudioSource audioSource;
-    
+    public AudioSource mainAudioSource;
+    public AudioSource effectsAudioSource;
+
     bool fadingOut = false;
     bool fadingIn = true;
 
-    float fadeSpeed = 0.4f;
-    public float maxVolume = 0.6f;
+    public float fadeSpeed = 0.3f;
+    float maxVolume;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
+        maxVolume = 0.6f;
     }
 
     void Update()
@@ -25,14 +27,14 @@ public class BGMManager : MonoBehaviour
         if (fadingOut)
         {
             fadingIn = false;
-            audioSource.volume = Mathf.Clamp(audioSource.volume - fadeSpeed * Time.deltaTime, 0, maxVolume);
-            if (audioSource.volume == 0) fadingOut = false;
+            mainAudioSource.volume = Mathf.Clamp(mainAudioSource.volume - fadeSpeed * Time.deltaTime, 0, maxVolume);
+            if (mainAudioSource.volume == 0) fadingOut = false;
         }
 
         else if (fadingIn)
         {
-            audioSource.volume = Mathf.Clamp(audioSource.volume + fadeSpeed * Time.deltaTime, 0, maxVolume);
-            if (audioSource.volume >= maxVolume) fadingIn = false;
+            mainAudioSource.volume = Mathf.Clamp(mainAudioSource.volume + fadeSpeed * Time.deltaTime, 0, maxVolume);
+            if (mainAudioSource.volume >= maxVolume) fadingIn = false;
         }
     }
 
@@ -43,15 +45,17 @@ public class BGMManager : MonoBehaviour
 
     public void PlayMusicBoxBGM()
     {
-        audioSource.clip = musicBoxBGM;
-        audioSource.Play();
+        mainAudioSource.clip = musicBoxBGM;
+        mainAudioSource.Play();
+        effectsAudioSource.Play();
+        maxVolume = 0.2f;
         fadingIn = true;
     }
 
-    public void PlayBackyardBGM()
-    {
-        audioSource.clip = backyardBGM;
-        audioSource.Play();
-        fadingIn = true;
-    }
+    //public void PlayBackyardBGM()
+    //{
+    //    mainAudioSource.clip = backyardBGM;
+    //    mainAudioSource.Play();
+    //    fadingIn = true;
+    //}
 }

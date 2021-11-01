@@ -78,7 +78,7 @@ public class GrandmaController : MonoBehaviour
 
     public void TriggerActualEndingState()
     {
-        ThrowFrisbee();
+        Invoke(nameof(ThrowFrisbee), 1f);
         audioSource.clip = finalAudioClips[1];
         audioSource.Play();
     }
