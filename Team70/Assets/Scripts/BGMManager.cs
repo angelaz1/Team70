@@ -24,6 +24,7 @@ public class BGMManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         maxVolume = 0.6f;
+        effectsAudioSource.volume = 0;
     }
 
     void Update()
@@ -47,6 +48,8 @@ public class BGMManager : MonoBehaviour
             if (effectsAudioSource.volume == 0)
             {
                 effectsAudioSource.clip = backyardBGM;
+                effectsAudioSource.volume = 0.1f;
+                effectsAudioSource.Play();
                 effectsFadingIn = true;
                 effectsFadingOut = false;
                 effectsMaxVolume = 0.5f;
