@@ -16,6 +16,7 @@ public class Tutorial3 : TutorialNode
     public bool risPress = false;
     public bool lisPress = false;
     public Material[] boneOriginal;
+    public AudioClip pickUpSound;
     private void Start()
     {
         if (tutorialClip) { this.GetComponent<AudioSource>().PlayOneShot(tutorialClip); }
@@ -34,6 +35,7 @@ public class Tutorial3 : TutorialNode
         Transform dog = GameObject.Find("dog").GetComponent<Transform>();
         this.transform.position = transform.position + transform.forward * 20f;
         Bone.SetActive(true);
+        tutorialManager.ShowTurtorialTxt(tutorialText);
        
     }
     IEnumerator InstructionSound(float i)
@@ -63,8 +65,13 @@ public class Tutorial3 : TutorialNode
         }
 
         
-        if ((other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
-        else if ((other.tag == "Dog") && !isGrab) { GrabObject(); print("enter bone area"); }
+        if ((other.tag == "Dog") && !isGrab)
+        {
+            GrabObject();
+            //print("enter bone area");
+            this.GetComponent<AudioSource>().PlayOneShot(pickUpSound);
+        }
+        
         
 
     }

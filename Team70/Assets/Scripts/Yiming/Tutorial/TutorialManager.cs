@@ -38,15 +38,22 @@ public class TutorialManager : MonoBehaviour
             generatePlacer = dogTransform.position + dogTransform.forward * distance;
             GameObject go = Instantiate(nodeList[currentNode.nextNode.num], generatePlacer, Quaternion.identity);
             currentNode = go.GetComponent<TutorialNode>();
-            tutorialTxt.color = new Color(255, 255, 255, 1);
-            tutorialTxt.text = currentNode.tutorialText;
-            StartCoroutine(TxtDisappear());
+            
         }
     }
+    /// <summary>
+    /// when needed show this txt;
+    /// </summary>
+    public void ShowTurtorialTxt(string tutorialText)
+    {
+        tutorialTxt.color = new Color(255, 255, 255, 1);
+        tutorialTxt.text = tutorialText;
+        StartCoroutine(TxtDisappear());
 
+    }
     IEnumerator TxtDisappear()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         tutorialTxt.color = new Color(255, 255, 255, 0);
     }
 }
