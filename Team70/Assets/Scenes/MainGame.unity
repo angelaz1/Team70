@@ -24189,6 +24189,10 @@ PrefabInstance:
       propertyPath: whiteScreen
       value: 
       objectReference: {fileID: 1927994356}
+    - target: {fileID: 1471370884, guid: bd52f38567ef9d041be83b26307183bb, type: 3}
+      propertyPath: whiteSkyboxMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 33951e52288f42044928845e883e9d04, type: 2}
     - target: {fileID: 1583499052, guid: bd52f38567ef9d041be83b26307183bb, type: 3}
       propertyPath: m_Layer
       value: 10

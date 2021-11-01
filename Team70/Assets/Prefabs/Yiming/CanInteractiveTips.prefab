@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6856772fe716e429162c47c4e191f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableTips: {fileID: 0}
+  interactableTips: {fileID: 1396338137043440517}
   io: {fileID: 0}
 --- !u!1001 &9029322680200245766
 PrefabInstance:
@@ -117,6 +117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597a20757bb326c46b43b2d5d1bfae6b, type: 3}
+--- !u!1 &1396338137043440517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7939374454033392003, guid: 597a20757bb326c46b43b2d5d1bfae6b, type: 3}
+  m_PrefabInstance: {fileID: 9029322680200245766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5834700435940849065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3294273182242211759, guid: 597a20757bb326c46b43b2d5d1bfae6b, type: 3}
