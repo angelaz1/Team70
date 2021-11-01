@@ -17,7 +17,7 @@ public class PassThroughTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!startingScene && other.tag == "Frisbee")
+        if (!startingScene && other.tag == "Player")
         {
             gameManager.TriggerEndScene();
         }

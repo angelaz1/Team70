@@ -13,7 +13,6 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        whiteScreen = GameObject.Find("WhiteScreen");
         if (whiteScreen) whiteScreen.SetActive(false);
     }
 

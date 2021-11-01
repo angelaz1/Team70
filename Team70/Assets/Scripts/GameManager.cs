@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject frontdoorCollider;
     public GameObject backdoorCollider;
 
+    public GameObject finalWalkArea;
+
     BGMManager bgmManager;
 
     Camera innerCamera;
@@ -47,17 +49,19 @@ public class GameManager : MonoBehaviour
 
         bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         backdoorCollider.SetActive(false);
+
+        finalWalkArea.SetActive(false);
     }
 
     private void Update()
     {
-        if (moveCamera)
-        {
-            innerCamera.transform.localRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, currentTime / moveCamTime);
-            innerCamera.transform.localPosition = Vector3.Lerp(currentPosition, Vector3.zero, currentTime / moveCamTime);
-            currentTime += Time.deltaTime;
-            if (currentTime == 1) moveCamera = false;
-        }
+        //if (moveCamera)
+        //{
+        //    innerCamera.transform.localRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, currentTime / moveCamTime);
+        //    innerCamera.transform.localPosition = Vector3.Lerp(currentPosition, Vector3.zero, currentTime / moveCamTime);
+        //    currentTime += Time.deltaTime;
+        //    if (currentTime == 1) moveCamera = false;
+        //}
     }
 
     public void TriggerNextAction() 
@@ -75,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
         else if (currentEvent == waitTimes.Length)
         {
-            TriggerEndScene();
+            finalWalkArea.SetActive(true);
         }
         else
         {
@@ -95,17 +99,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("Ending scene!");
         grandma.TriggerEndingState();
 
-        GameObject dog = GameObject.Find("dog");
-        if (dog)
-        {
-            dog.GetComponent<Rigidbody>().isKinematic = true;
-            dog.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-        }
+        //GameObject dog = GameObject.Find("dog");
+        //if (dog)
+        //{
+        //    dog.GetComponent<Rigidbody>().isKinematic = true;
+        //    dog.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        //}
 
         cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
-        cameraMover.GetComponentInChildren<TrackedPoseDriver>().enabled = false;
-        moveCamera = true;
-        currentRotation = innerCamera.transform.localRotation;
-        currentPosition = innerCamera.transform.localPosition;
+        //cameraMover.GetComponentInChildren<TrackedPoseDriver>().enabled = false;
+        //moveCamera = true;
+        //currentRotation = innerCamera.transform.localRotation;
+        //currentPosition = innerCamera.transform.localPosition;
     }
 }
