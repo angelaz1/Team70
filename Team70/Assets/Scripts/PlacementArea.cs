@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlacementArea : MonoBehaviour
 {
     public GameObject targetObject;
+    public GameObject positionIndicator;
 
     bool placed = false;
     GameManager gameManager;
@@ -18,7 +19,7 @@ public class PlacementArea : MonoBehaviour
     {
         if (other.gameObject == targetObject) 
         {
-            other.gameObject.GetComponent<SnappableObject>().SnapToLocation(transform.position);
+            other.gameObject.GetComponent<SnappableObject>().SnapToLocation(positionIndicator.transform.position);
             TriggerableAction();
         }
     }

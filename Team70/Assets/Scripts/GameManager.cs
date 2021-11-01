@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject simulatorPrefab;
+    public GameObject simulatorObjects;
+    public GameObject actualObjects;
 
     public GrandmaController grandma;
-    public GameObject cameraMover;
+    GameObject cameraMover;
 
     // List of wait times before triggering next action in sequence
     public float[] waitTimes;
@@ -19,81 +20,111 @@ public class GameManager : MonoBehaviour
     int currentEvent = 0;
     bool waitingForBark = false;
 
-    public GameObject barkUI;
-    public InputActionReference barkButton;
+    public GameObject frontdoorCollider;
+    public GameObject backdoorCollider;
+
+    public GameObject finalWalkArea;
+
+    BGMManager bgmManager;
+    DogSFXManager dogSFXManager;
+
+    Camera innerCamera;
+
+    bool moveCamera = false;
+    Quaternion currentRotation;
+    Vector3 currentPosition;
+    float currentTime = 0;
+    float moveCamTime = 3f;
 
     private void Awake()
     {
-        simulatorPrefab.SetActive(!XRSettings.isDeviceActive);
+        simulatorObjects.SetActive(!XRSettings.isDeviceActive);
+        actualObjects.SetActive(XRSettings.isDeviceActive);
+        cameraMover = GameObject.Find("CameraMover");
+        innerCamera = cameraMover.GetComponentInChildren<Camera>();
 
         foreach (GameObject taskObject in taskObjects)
         {
             taskObject.SetActive(false);
         }
 
-        barkButton.action.started += CheckForBark;
+        bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
+        dogSFXManager = GameObject.Find("DogSFXManager").GetComponent<DogSFXManager>();
+        backdoorCollider.SetActive(false);
+
+        finalWalkArea.SetActive(false);
     }
 
-    void CheckForBark(InputAction.CallbackContext ctx)
+    private void Update()
     {
-        if (waitingForBark)
-        {
-            Debug.Log("Woof!");
-            TriggerEndScene();
-            waitingForBark = false;
-        }
+        //if (moveCamera)
+        //{
+        //    innerCamera.transform.localRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, currentTime / moveCamTime);
+        //    innerCamera.transform.localPosition = Vector3.Lerp(currentPosition, Vector3.zero, currentTime / moveCamTime);
+        //    currentTime += Time.deltaTime;
+        //    if (currentTime == 1) moveCamera = false;
+        //}
     }
 
     public void TriggerNextAction() 
     {
+        if (currentEvent == 0)
+        {
+            frontdoorCollider.GetComponent<Door>().TurnOnCollider();
+            bgmManager.FadeOutBGM();
+        }
+
         if (currentEvent < waitTimes.Length)
         {
             grandma.CompleteCurrentState();
-            Invoke(nameof(TriggerNewspaperState), waitTimes[currentEvent]);
+            Invoke(nameof(TriggerGrandmaState), waitTimes[currentEvent]);
         }
         else if (currentEvent == waitTimes.Length)
         {
-            // Prompt player to bark
-            waitingForBark = true;
-            barkUI.SetActive(true);
+            grandma.CompleteCurrentState();
+            bgmManager.SwapToBackyard();
+            finalWalkArea.SetActive(true);
         }
         else
         {
-            Debug.LogError("No Actions left!");
+            Debug.Log("No Actions left!");
         }
-
-        //switch (currentEvent) 
-        //{
-        //    case 0:
-        //        {
-        //            // Player walks through door -> wait for player to explore then trigger grandma
-        //            Invoke(nameof(TriggerNewspaperState), waitTimes[currentEvent]);
-        //            break;
-        //        }
-        //    case 1: // Player gets newspaper -> trigger grandma anim + dialogue
-        //    case 2: // Player gets glasses -> trigger grandma anim + dialogue, wait, then anim + dialogue
-        //    case 3: // Player gets meds -> trigger grandma anim + dialogue, grandma goes outside
-        //    case 4: // Player goes outside -> trigger UI/o.w. to tell player to bark
-        //    case 5: // Player barks -> trigger anim + dialogue
-        //        grandma.TriggerNextState(); break;
-        //    default: Debug.LogError("No Actions left!"); return;
-        //}
-
-        //currentEvent++;
     }
 
-    private void TriggerNewspaperState()
+    private void TriggerGrandmaState()
     {
         if (currentEvent < taskObjects.Length) taskObjects[currentEvent].SetActive(true);
         grandma.TriggerNextState();
         currentEvent++;
     }
 
+    public void SwapToBackyardBGM()
+    {
+        dogSFXManager.SwapToGrassClips();
+    }
+
     public void TriggerEndScene()
     {
-        // Player did bark
-        barkUI.SetActive(false);
-        grandma.TriggerEndingState();
-        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene"); // Change this to be the correct camera movement
+        Debug.Log("Ending scene!");
+        dogSFXManager.PlayHappyJumpClip();
+        Invoke(nameof(TriggerActualEndingState), 2f);
+    }
+
+    void TriggerActualEndingState()
+    {
+        grandma.TriggerActualEndingState();
+
+        //GameObject dog = GameObject.Find("dog");
+        //if (dog)
+        //{
+        //    dog.GetComponent<Rigidbody>().isKinematic = true;
+        //    dog.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        //}
+
+        cameraMover.GetComponent<Animator>().SetTrigger("EndingCutscene");
+        //cameraMover.GetComponentInChildren<TrackedPoseDriver>().enabled = false;
+        //moveCamera = true;
+        //currentRotation = innerCamera.transform.localRotation;
+        //currentPosition = innerCamera.transform.localPosition;
     }
 }

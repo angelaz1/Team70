@@ -20,7 +20,10 @@ public class PawsRecognize : MonoBehaviour
     private Queue<Vector3> handPos = new Queue<Vector3>();
     public float recordInterval = 0.05f;
     public float recognitionThreshold = 0.7f;
-
+    public float stopTime = 1f;// if controller donot move for 1second ,clear ther queue
+    private float time = 0;
+    public Vector3 lastHandPos;
+ 
     public int HandListLimitCount = 10;
     public NewStringEvent onRecognize;
     private void Start()
@@ -33,6 +36,20 @@ public class PawsRecognize : MonoBehaviour
         GestureListInitial();
         HandGestureRecognize();
     }
+
+
+
+    /// <summary>
+    /// when controller stop for a second than clear the queue
+    /// </summary>
+    private void DetectControllerStop()
+    {
+        if (Vector3.Distance(handT.position, lastHandPos) > recordInterval)
+        {
+
+        }
+    }
+
     /// <summary>
     /// right hand gesture recognize without trigger
     /// </summary>

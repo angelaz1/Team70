@@ -6,6 +6,9 @@ public class PassThroughTrigger : MonoBehaviour
 {
     GameManager gameManager;
 
+    public bool startingScene;
+    public bool backyardTrigger;
+
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -13,9 +16,19 @@ public class PassThroughTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (backyardTrigger && other.tag == "Player")
+        {
+            gameManager.SwapToBackyardBGM();
+            Destroy(gameObject);
+        }
+        else if (startingScene && other.tag == "Player")
         {
             gameManager.TriggerNextAction();
+            Destroy(gameObject);
+        }
+        else if (!startingScene && other.tag == "Player")
+        {
+            gameManager.TriggerEndScene();
             Destroy(gameObject);
         }
     }
