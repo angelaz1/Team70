@@ -53,7 +53,7 @@ public class TutorialManager : MonoBehaviour
     }
     IEnumerator TxtDisappear()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(7);
         tutorialTxt.color = new Color(255, 255, 255, 0);
     }
 }

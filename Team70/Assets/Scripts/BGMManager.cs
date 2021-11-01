@@ -69,7 +69,7 @@ public class BGMManager : MonoBehaviour
 
     public void PlayMusicBoxBGM()
     {
-        effectsAudioSource.volume = 0.5f;
+        effectsAudioSource.volume = 0.3f;
         effectsAudioSource.Play();
         Invoke(nameof(ActuallyPlayMusicBoxBGM), effectsAudioSource.clip.length + 0.1f);
     }
