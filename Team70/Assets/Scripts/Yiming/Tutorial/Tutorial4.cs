@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial4 : TutorialNode
 {
-    public float delayTime = 2f;
+    public float delayTime = 0.5f;
     private bool changeColor = false;
     public AudioClip pickDownSound;
     private void OnTriggerEnter(Collider other)
@@ -35,20 +35,20 @@ public class Tutorial4 : TutorialNode
             RenderSettings.skybox.SetColor("_Tint", now);
 
         }
-
     }
+
     public override void EndNode()
     {
-        changeColor = true;
-        StartCoroutine(JumpScene());
-        
+        if (!changeColor)
+        { 
+            changeColor = true;
+            StartCoroutine(JumpScene());
+        }
     }
+
     IEnumerator JumpScene()
     {
         yield return new WaitForSeconds(delayTime);
-        
-        SceneManager.LoadScene("MainGame");
-
+        SceneManager.LoadSceneAsync("MainGame");
     }
-
 }
