@@ -22,6 +22,7 @@ public class EndingManager : MonoBehaviour
         actualObjects.SetActive(XRSettings.isDeviceActive);
         mainCamera = GameObject.Find("Main Camera");
         bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
+        bgmManager.SwapToBackyard();
         creditsCanvas.SetActive(false);
     }
 
