@@ -54,12 +54,17 @@ public class GrandmaController : MonoBehaviour
             audioSource.Play();
             Invoke(nameof(TriggerGrandmaOutside), audioSource.clip.length + 1f);
             anim.SetTrigger(startActionTriggerNames[currentState]);
-            GameObject.Find("BGMManager").GetComponent<BGMManager>().PlayMusicBoxBGM();
+            Invoke(nameof(PlayMusicBGM), 2f);
         }
         else
         {
             Debug.Log("No Actions left for Grandma!");
         }
+    }
+
+    void PlayMusicBGM()
+    {
+        GameObject.Find("BGMManager").GetComponent<BGMManager>().PlayMusicBoxBGM();
     }
 
     public void TriggerGrandmaOutside()

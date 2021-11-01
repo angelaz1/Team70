@@ -12,6 +12,7 @@ public class EndingManager : MonoBehaviour
     public GameObject creditsCanvas;
 
     GameObject mainCamera;
+    public GameObject movementController;
     //BGMManager bgmManager;
 
     Quaternion targetRotation = Quaternion.Euler(312.906311f, 184.462158f, 181.859985f);
@@ -41,5 +42,6 @@ public class EndingManager : MonoBehaviour
         directionalLight.transform.rotation = targetRotation;
         creditsCanvas.SetActive(true);
         mainCamera.GetComponent<Animator>().SetTrigger("FadeOut");
+        movementController.SetActive(true);
     }
 }

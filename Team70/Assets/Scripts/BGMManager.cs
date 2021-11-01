@@ -69,7 +69,7 @@ public class BGMManager : MonoBehaviour
 
     public void PlayMusicBoxBGM()
     {
-        effectsAudioSource.volume = 0.3f;
+        effectsAudioSource.volume = 0.2f;
         effectsAudioSource.Play();
         Invoke(nameof(ActuallyPlayMusicBoxBGM), effectsAudioSource.clip.length + 0.1f);
     }
@@ -94,5 +94,11 @@ public class BGMManager : MonoBehaviour
     public void SwapToBackyard()
     {
         effectsFadingOut = true;
+    }
+
+    public void CutAllSounds()
+    {
+        fadingOut = true;
+        fadeSpeed = 0.5f;
     }
 }
