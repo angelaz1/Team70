@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         }
         else if (currentEvent == waitTimes.Length)
         {
+            grandma.CompleteCurrentState();
             finalWalkArea.SetActive(true);
         }
         else
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
     public void TriggerEndScene()
     {
         Debug.Log("Ending scene!");
-        grandma.TriggerEndingState();
+        grandma.TriggerActualEndingState();
 
         //GameObject dog = GameObject.Find("dog");
         //if (dog)

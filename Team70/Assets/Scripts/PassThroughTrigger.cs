@@ -20,6 +20,7 @@ public class PassThroughTrigger : MonoBehaviour
         if (!startingScene && other.tag == "Player")
         {
             gameManager.TriggerEndScene();
+            Destroy(gameObject);
         }
         if (startingScene && other.tag == "Player")
         {

@@ -72,19 +72,15 @@ public class GrandmaController : MonoBehaviour
     public void TriggerEndingState()
     {
         anim.SetTrigger("FinalAnimation");
-        StartCoroutine(PlayFinalClips());
+        audioSource.clip = finalAudioClips[0];
+        audioSource.Play();
     }
 
-    IEnumerator PlayFinalClips()
+    public void TriggerActualEndingState()
     {
-        int finalIndex = 0;
-        while (finalIndex < finalAudioClips.Count)
-        {
-            audioSource.clip = finalAudioClips[finalIndex];
-            audioSource.Play();
-            yield return new WaitForSeconds(finalAudioClips[finalIndex].length);
-            finalIndex++;
-        }
+        ThrowFrisbee();
+        audioSource.clip = finalAudioClips[1];
+        audioSource.Play();
     }
 
     public void CompleteCurrentState()
@@ -104,6 +100,10 @@ public class GrandmaController : MonoBehaviour
         if (currentState >= 0 && currentState < finishActionClips.Count)
         {
             Invoke(nameof(PlayCurrentFinishClip), 0.5f);
+        }
+        else if (currentState == finishActionClips.Count)
+        {
+            TriggerEndingState();
         }
     }
 
