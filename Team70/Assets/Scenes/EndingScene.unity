@@ -2050,6 +2050,25 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 3599193308049293482, guid: bd52f38567ef9d041be83b26307183bb, type: 3}
   m_PrefabInstance: {fileID: 746663579}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &746663584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746663582}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc1a6204be143ca4dbaa14ce97f250f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &769196293
 GameObject:
   m_ObjectHideFlags: 0
