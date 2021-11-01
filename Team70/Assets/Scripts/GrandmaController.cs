@@ -57,7 +57,7 @@ public class GrandmaController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No Actions left for Grandma!");
+            Debug.Log("No Actions left for Grandma!");
         }
     }
 

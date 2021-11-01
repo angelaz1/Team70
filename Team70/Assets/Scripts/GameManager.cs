@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No Actions left!");
+            Debug.Log("No Actions left!");
         }
     }
 
