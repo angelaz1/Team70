@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class InteractableObjects : MonoBehaviour
 {
@@ -18,12 +18,15 @@ public class InteractableObjects : MonoBehaviour
     [Tooltip("Priority of object when being grabbed. Higher number = higher priority")]
     private Rigidbody rigidbody;
     public float coldDown = 1f;
+    public string TipsToThrow = "Shake your head to throw!";
+    private Text tipsTxt;
 
     private void Start()
     {
         headRecognize = FindObjectOfType<HeadRecognize>();
         muzzleLocation = GameObject.Find("MuzzleLocation").GetComponent<Transform>();
         rigidbody = GetComponent<Rigidbody>();
+        tipsTxt = GameObject.Find("TutorialText").GetComponent<Text>();
     }
 
 
@@ -65,6 +68,14 @@ public class InteractableObjects : MonoBehaviour
         rigidbody.isKinematic = true;
         isGrab = true;
         headRecognize.GrabSomething(this.gameObject);
+        //tips to throw the object
+        if (canThrow)
+        {
+            tipsTxt.text = TipsToThrow;
+            tipsTxt.color = new Color(255, 255, 255, 1);
+            StartCoroutine(TipsDisappear());
+        }
+
 
         SnappableObject snappable = GetComponent<SnappableObject>();
         if (snappable)
@@ -73,6 +84,13 @@ public class InteractableObjects : MonoBehaviour
             snappable.SetGrabbed(true);
         }
     }
+
+    IEnumerator TipsDisappear()
+    {
+        yield return new WaitForSeconds(3.5f);
+        tipsTxt.color = new Color(255, 255, 255, 0);
+    }
+
 
     public void Dropped()
     {
