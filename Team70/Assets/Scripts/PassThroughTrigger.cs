@@ -7,6 +7,7 @@ public class PassThroughTrigger : MonoBehaviour
     GameManager gameManager;
 
     public bool startingScene;
+    public bool backyardTrigger;
 
     private void Start()
     {
@@ -15,14 +16,19 @@ public class PassThroughTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!startingScene && other.tag == "Player")
+        if (backyardTrigger && other.tag == "Player")
         {
-            gameManager.TriggerEndScene();
+            gameManager.SwapToBackyardBGM();
             Destroy(gameObject);
         }
-        if (startingScene && other.tag == "Player")
+        else if (startingScene && other.tag == "Player")
         {
             gameManager.TriggerNextAction();
+            Destroy(gameObject);
+        }
+        else if (!startingScene && other.tag == "Player")
+        {
+            gameManager.TriggerEndScene();
             Destroy(gameObject);
         }
     }

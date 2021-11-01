@@ -44,7 +44,13 @@ public class BGMManager : MonoBehaviour
         {
             effectsFadingIn = false;
             effectsAudioSource.volume = Mathf.Clamp(effectsAudioSource.volume - fadeSpeed * Time.deltaTime, 0, effectsMaxVolume);
-            if (effectsAudioSource.volume == 0) effectsFadingOut = false;
+            if (effectsAudioSource.volume == 0)
+            {
+                effectsAudioSource.clip = backyardBGM;
+                effectsFadingIn = true;
+                effectsFadingOut = false;
+                effectsMaxVolume = 0.5f;
+            } 
         }
         else if (effectsFadingIn)
         {
@@ -60,10 +66,9 @@ public class BGMManager : MonoBehaviour
 
     public void PlayMusicBoxBGM()
     {
-        effectsAudioSource.volume = 0.6f;
+        effectsAudioSource.volume = 0.5f;
         effectsAudioSource.Play();
-        Invoke(nameof(ActuallyPlayMusicBoxBGM), effectsAudioSource.clip.length);
-        
+        Invoke(nameof(ActuallyPlayMusicBoxBGM), effectsAudioSource.clip.length + 0.1f);
     }
 
     void ActuallyPlayMusicBoxBGM()
@@ -76,8 +81,8 @@ public class BGMManager : MonoBehaviour
         effectsAudioSource.loop = true;
         effectsAudioSource.Play();
 
-        maxVolume = 0.2f;
-        effectsMaxVolume = 0.1f;
+        maxVolume = 0.25f;
+        effectsMaxVolume = 0.05f;
 
         fadingIn = true;
         effectsFadingIn = true;
@@ -87,11 +92,4 @@ public class BGMManager : MonoBehaviour
     {
         effectsFadingOut = true;
     }
-
-    //public void PlayBackyardBGM()
-    //{
-    //    mainAudioSource.clip = backyardBGM;
-    //    mainAudioSource.Play();
-    //    fadingIn = true;
-    //}
 }

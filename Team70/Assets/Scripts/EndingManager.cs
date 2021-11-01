@@ -12,7 +12,7 @@ public class EndingManager : MonoBehaviour
     public GameObject creditsCanvas;
 
     GameObject mainCamera;
-    BGMManager bgmManager;
+    //BGMManager bgmManager;
 
     Quaternion targetRotation = Quaternion.Euler(312.906311f, 184.462158f, 181.859985f);
 
@@ -21,8 +21,8 @@ public class EndingManager : MonoBehaviour
         simulatorObjects.SetActive(!XRSettings.isDeviceActive);
         actualObjects.SetActive(XRSettings.isDeviceActive);
         mainCamera = GameObject.Find("Main Camera");
-        bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
-        bgmManager.SwapToBackyard();
+        //bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
+        //bgmManager.SwapToBackyard();
         creditsCanvas.SetActive(false);
     }
 

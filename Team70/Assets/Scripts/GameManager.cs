@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject finalWalkArea;
 
     BGMManager bgmManager;
+    DogSFXManager dogSFXManager;
 
     Camera innerCamera;
 
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
 
         bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
+        dogSFXManager = GameObject.Find("DogSFXManager").GetComponent<DogSFXManager>();
         backdoorCollider.SetActive(false);
 
         finalWalkArea.SetActive(false);
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
         else if (currentEvent == waitTimes.Length)
         {
             grandma.CompleteCurrentState();
+            bgmManager.SwapToBackyard();
             finalWalkArea.SetActive(true);
         }
         else
@@ -95,9 +98,20 @@ public class GameManager : MonoBehaviour
         currentEvent++;
     }
 
+    public void SwapToBackyardBGM()
+    {
+        dogSFXManager.SwapToGrassClips();
+    }
+
     public void TriggerEndScene()
     {
         Debug.Log("Ending scene!");
+        dogSFXManager.PlayHappyJumpClip();
+        Invoke(nameof(TriggerActualEndingState), 2f);
+    }
+
+    void TriggerActualEndingState()
+    {
         grandma.TriggerActualEndingState();
 
         //GameObject dog = GameObject.Find("dog");

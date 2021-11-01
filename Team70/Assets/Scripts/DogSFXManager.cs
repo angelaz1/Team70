@@ -7,15 +7,20 @@ public class DogSFXManager : MonoBehaviour
 {
     public AudioClip[] happyClips;
     public AudioClip[] sadClips;
-    public AudioClip[] movingClips;
+    public AudioClip[] indoorMovingClips;
+    public AudioClip[] grassMovingClips;
+
+    public AudioClip happyJumpClip;
 
     public float delayPlayTime = 0.5f;
 
     AudioSource audioSource;
+    AudioClip[] movingClips;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        movingClips = indoorMovingClips;
     }
 
     public void PlayHappyClip() 
@@ -44,6 +49,20 @@ public class DogSFXManager : MonoBehaviour
         audioSource.clip = clip;
         Invoke(nameof(PlayClip), delayPlayTime);
     }
+
+    public void SwapToGrassClips()
+    {
+        movingClips = grassMovingClips;
+    }
+
+    public void PlayHappyJumpClip()
+    {
+        AudioClip clip = happyJumpClip;
+        audioSource.volume = 0.5f;
+        audioSource.clip = clip;
+        Invoke(nameof(PlayClip), delayPlayTime);
+    }
+
     void PlayClip()
     {
         audioSource.Play();
