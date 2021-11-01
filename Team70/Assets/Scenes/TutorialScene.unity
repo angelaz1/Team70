@@ -240,7 +240,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 8e1b3faae2eea9242b5553b5a085e4bb, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 5f8217c77f725c545bdf10a7aba8767b, type: 2}
 --- !u!4 &339142412
 Transform:
   m_ObjectHideFlags: 0
@@ -1612,7 +1612,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
