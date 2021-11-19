@@ -10,12 +10,13 @@ public class EndingManager : MonoBehaviour
     public List<GameObject> environmentAssets;
     public GameObject directionalLight;
     public GameObject creditsCanvas;
-
+    public bool endscene = false;
     GameObject mainCamera;
     public GameObject movementController;
     //BGMManager bgmManager;
 
     Quaternion targetRotation = Quaternion.Euler(312.906311f, 184.462158f, 181.859985f);
+
 
     private void Awake()
     {
@@ -25,6 +26,10 @@ public class EndingManager : MonoBehaviour
         //bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         //bgmManager.SwapToBackyard();
         creditsCanvas.SetActive(false);
+        if (endscene)
+        {
+            RemoveEverything();
+        }
     }
 
     public void TriggerCredits()

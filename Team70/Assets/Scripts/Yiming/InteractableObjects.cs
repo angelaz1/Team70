@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InteractableObjects : MonoBehaviour
 {
@@ -19,14 +20,14 @@ public class InteractableObjects : MonoBehaviour
     private Rigidbody rigidbody;
     public float coldDown = 1f;
     public string TipsToThrow = "Shake your head to throw!";
-    private Text tipsTxt;
+    private TextMeshProUGUI tipsTxt;
 
     private void Start()
     {
         headRecognize = FindObjectOfType<HeadRecognize>();
         muzzleLocation = GameObject.Find("MuzzleLocation").GetComponent<Transform>();
         rigidbody = GetComponent<Rigidbody>();
-        tipsTxt = GameObject.Find("TutorialText").GetComponent<Text>();
+        tipsTxt = GameObject.Find("TutorialText").GetComponent<TextMeshProUGUI>();
     }
 
 
