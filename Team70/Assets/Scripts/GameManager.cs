@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject frontdoorCollider;
     public GameObject backdoorCollider;
 
+    public GameObject backyardCollider;
     public GameObject finalWalkArea;
 
     BGMManager bgmManager;
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
         {
             grandma.CompleteCurrentState();
             bgmManager.SwapToBackyard();
+            backyardCollider.SetActive(false);
             finalWalkArea.SetActive(true);
         }
         else

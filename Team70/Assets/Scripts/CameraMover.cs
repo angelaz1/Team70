@@ -8,6 +8,8 @@ public class CameraMover : MonoBehaviour
     public GameObject whiteScreen;
     public AudioClip whiteScreenSound;
     public Material whiteSkyboxMaterial;
+    public GameObject backfenceObjects;
+
     bool isFade = false;
     AudioSource audioSource;
     Color now = Color.white;
@@ -33,8 +35,12 @@ public class CameraMover : MonoBehaviour
         {
             //whiteScreen.SetActive(true);
             ChangeWhiteSkyBox();
-        }
-            
+        }   
+    }
+
+    public void DisableBackfence()
+    {
+        backfenceObjects.SetActive(false);
     }
 
 

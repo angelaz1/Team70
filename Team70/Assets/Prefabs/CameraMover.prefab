@@ -242,6 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteScreen: {fileID: 0}
   whiteScreenSound: {fileID: 8300000, guid: 21be4e4443ef77343858bf9c53d18bb4, type: 3}
+  whiteSkyboxMaterial: {fileID: 2100000, guid: 33951e52288f42044928845e883e9d04, type: 2}
+  backfenceObjects: {fileID: 0}
 --- !u!82 &7996727560960979698
 AudioSource:
   m_ObjectHideFlags: 0
