@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartManager : MonoBehaviour
 {
+    public Material mr;
 
     public void StartTheGame()
     {
@@ -13,7 +14,7 @@ public class StartManager : MonoBehaviour
 
     public void OnHover()
     {
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        mr.color = Color.blue;
     }
     public void LeaveHover()
     {
