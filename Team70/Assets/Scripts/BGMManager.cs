@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
+    public static BGMManager _bgmManager;
+
     public AudioClip musicBoxBGM;
     public AudioClip backyardBGM;
     public AudioClip staticBGM;
@@ -17,14 +19,23 @@ public class BGMManager : MonoBehaviour
     bool effectsFadingIn = false;
 
     public float fadeSpeed = 0.3f;
-    float maxVolume;
-    float effectsMaxVolume;
+    static float maxVolume;
+    static float effectsMaxVolume;
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         maxVolume = 0.6f;
         effectsAudioSource.volume = 0;
+
+        if (!_bgmManager)
+        {
+            _bgmManager = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }  
     }
 
     void Update()
