@@ -7,6 +7,11 @@ public class StartManager : MonoBehaviour
 {
     public Material mr;
 
+    private void Start()
+    {
+        RenderSettings.skybox.SetColor("_Tint", Color.black);
+    }
+
     public void StartTheGame()
     {
         SceneManager.LoadScene("TutorialScene");
