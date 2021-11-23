@@ -9,11 +9,12 @@ public class Door : MonoBehaviour
     [SerializeField] bool closeOnExit;
     [SerializeField] GameObject doorCollider;
 
+    [SerializeField] bool defaultColliderState;
     bool canCloseDoorForever = false;
 
     private void Start()
     {
-        if (doorCollider) doorCollider.SetActive(false);
+        if (doorCollider) doorCollider.SetActive(defaultColliderState);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,11 +38,13 @@ public class Door : MonoBehaviour
     {
         doorAni.SetBool("isOpen", true);
         audioSource.Play();
+        doorCollider.SetActive(false);
     }
 
     public void CloseDoor()
     {
         doorAni.SetBool("isOpen", false);
+        doorCollider.SetActive(true);
     }
 
     public void TurnOnCollider()
